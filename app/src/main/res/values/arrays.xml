@@ -1,0 +1,51 @@
+<resources>
+    <!-- General Preferences -->
+    <string-array name="theme_entries">
+        <item>@string/preference_theme_entry_light</item>
+        <item>@string/preference_theme_entry_dark</item>
+        <item>@string/preference_theme_entry_system</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>@string/preference_theme_value_light</item>
+        <item>@string/preference_theme_value_dark</item>
+        <item>@string/preference_theme_value_system</item>
+    </string-array>
+
+    <string-array name="showing_period_entries">
+        <item>@string/preference_showing_period_entry_one_day</item>
+        <item>@string/preference_showing_period_entry_two_days</item>
+        <item>@string/preference_showing_period_entry_three_days</item>
+        <item>@string/preference_showing_period_entry_one_week</item>
+        <item>@string/preference_showing_period_entry_two_weeks</item>
+        <item>@string/preference_showing_period_entry_one_month</item>
+        <item>@string/preference_showing_period_entry_two_months</item>
+    </string-array>
+    <string-array name="showing_period_values">
+        <item>@string/preference_showing_period_value_one_day</item>
+        <item>@string/preference_showing_period_value_two_days</item>
+        <item>@string/preference_showing_period_value_three_days</item>
+        <item>@string/preference_showing_period_value_one_week</item>
+        <item>@string/preference_showing_period_value_two_weeks</item>
+        <item>@string/preference_showing_period_value_one_month</item>
+        <item>@string/preference_showing_period_value_two_months</item>
+    </string-array>
+
+    <string-array name="refresh_frequency_entries">
+        <item>@string/preference_refresh_frequency_entry_manual</item>
+        <item>@string/preference_refresh_frequency_entry_quarter_hour</item>
+        <item>@string/preference_refresh_frequency_entry_half_hour</item>
+        <item>@string/preference_refresh_frequency_entry_one_hour</item>
+        <item>@string/preference_refresh_frequency_entry_two_hours</item>
+        <item>@string/preference_refresh_frequency_entry_four_hours</item>
+        <item>@string/preference_refresh_frequency_entry_six_hours</item>
+    </string-array>
+    <string-array name="refresh_frequency_values">
+        <item>@string/preference_refresh_frequency_value_manual</item>
+        <item>@string/preference_refresh_frequency_value_quarter_hour</item>
+        <item>@string/preference_refresh_frequency_value_half_hour</item>
+        <item>@string/preference_refresh_frequency_value_one_hour</item>
+        <item>@string/preference_refresh_frequency_value_two_hours</item>
+        <item>@string/preference_refresh_frequency_value_four_hours</item>
+        <item>@string/preference_refresh_frequency_value_six_hours</item>
+    </string-array>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.38177083333333334" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable-night/messages.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable-v21/app_widget_inner_view_background.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable-v31/calendar.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable-v31/configuration_done.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable-v31/no_data.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/calendar.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/ic_circle.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/ic_launcher.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/ic_notifications.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/ic_settings.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/messages.xml" value="0.1" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/drawable/no_data.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/activity_first_config.xml" value="0.29393115942028986" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/activity_settings.xml" value="0.29393115942028986" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/first_config_activity.xml" value="0.18385416666666668" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/fragment_c_o_c_o.xml" value="0.29393115942028986" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/fragment_first_config_choose_group.xml" value="0.29393115942028986" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/fragment_first_config_done.xml" value="0.17291666666666666" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/fragment_first_config_welcome.xml" value="0.19242902208201892" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/fragment_login.xml" value="0.29393115942028986" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/group_item.xml" value="0.29393115942028986" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/main_activity.xml" value="0.15803108808290156" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/main_fragment.xml" value="0.35733695652173914" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/overview_fragment.xml" value="0.190625" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/planning_empty_view.xml" value="0.20520833333333333" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/planning_item.xml" value="0.33" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/planning_item_widget.xml" value="1.0674342105263157" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/planning_widget.xml" value="0.3869209809264305" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/planning_widget_item.xml" value="0.19202898550724637" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/planning_widget_preview.xml" value="0.29393115942028986" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/layout/settings_activity.xml" value="0.1796875" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3697916666666667" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/menu/top_app_bar_menu.xml" value="0.353125" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1785" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/xml/general_preferences.xml" value="0.22" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/xml/header_preferences.xml" value="0.35733695652173914" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/xml/messages_preferences.xml" value="0.35733695652173914" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/xml/preference_screen.xml" value="1.2976973684210527" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/xml/root_preferences.xml" value="0.29393115942028986" />
+        <entry key="../../../../../mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app/src/main/res/xml/sync_preferences.xml" value="0.29393115942028986" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

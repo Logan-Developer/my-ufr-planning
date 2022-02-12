@@ -1,0 +1,9 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:fragment="us.logaming.myufrplanning.ui.settings.SettingsGeneralCategoryFragment"
+        app:icon="@drawable/messages"
+        app:key="general_header"
+        app:title="@string/general_preferences_header" />
+
+</PreferenceScreen>

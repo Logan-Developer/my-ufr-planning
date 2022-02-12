@@ -1,0 +1,43 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        app:defaultValue="@string/preference_theme_value_system"
+        app:entries="@array/theme_entries"
+        app:entryValues="@array/theme_values"
+        app:key="@string/preference_theme_key"
+        app:title="@string/preference_theme_title"
+        app:useSimpleSummaryProvider="true" />
+
+    <PreferenceCategory
+        app:title="Planning settings">
+
+        <ListPreference
+            app:defaultValue="@string/preference_showing_period_value_two_weeks"
+            app:entries="@array/showing_period_entries"
+            app:entryValues="@array/showing_period_values"
+            app:key="@string/preference_showing_period_key"
+            app:title="@string/preference_showing_period_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="@string/preference_refresh_frequency_value_half_hour"
+            app:entries="@array/refresh_frequency_entries"
+            app:entryValues="@array/refresh_frequency_values"
+            app:key="@string/preference_refresh_frequency_key"
+            app:title="@string/preference_refresh_frequency_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <Preference
+            app:fragment="us.logaming.myufrplanning.ui.choosegroup.ChooseGroupFragment"
+            app:key="@string/preference_group_key"
+            app:title="@string/preference_group_title"
+            app:summary="@string/preference_group_summary"/>
+
+        <Preference
+            app:fragment="us.logaming.myufrplanning.ui.login.LoginFragment"
+            app:key="@string/preference_login_key"
+            app:title="@string/title_login"
+            app:summary="@string/preference_user_display_name_default_value"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

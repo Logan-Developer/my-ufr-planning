@@ -1,0 +1,23 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    style="@style/Widget.MyUFRPlanning.AppWidget.Container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.MyUFRPlanning.AppWidgetContainer">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_view_planning_widget"
+        android:clickable="false"/>
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/planning_widget_empty"
+        android:textSize="20sp"
+        android:clickable="false"/>
+</FrameLayout>

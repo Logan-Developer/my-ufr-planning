@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_medium"
+    tools:context=".ui.choosegroup.ChooseGroupFragment">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_group_selection"
+        android:layout_gravity="center"
+        android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subtitle_group_selection"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/margin_medium"
+        android:textAppearance="?attr/textAppearanceBodySmall" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/recycler_view_groups"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_first_config_go_back"
+        android:text="@string/btn_go_back"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_gravity="start"
+        style="@style/Widget.Material3.Button.TextButton"/>
+</LinearLayout>

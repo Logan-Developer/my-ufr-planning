@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_overview"
+        android:enabled="true"
+        android:title="@string/menu_overview"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/menu_messages"
+        android:enabled="true"
+        android:title="@string/menu_messages"
+        android:icon="@drawable/ic_notifications"/>
+</menu>

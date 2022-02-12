@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    Having themes.xml for v31 variant because @android:dimen/system_app_widget_background_radius
+     and @android:dimen/system_app_widget_internal_padding requires API level 31
+    -->
+    <style name="Theme.MyUFRPlanning.AppWidgetContainerParent" parent="Theme.MyUFRPlanning">
+        <item name="appWidgetRadius">@android:dimen/system_app_widget_background_radius</item>
+        <item name="appWidgetInnerRadius">@android:dimen/system_app_widget_inner_radius</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="Theme.MyUFRPlanning" parent="Theme.Material3.DynamicColors.Light">
+        <!-- Remove the default action bar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="colorSecondaryContainer">@color/material_dynamic_secondary80</item>
+
+        <item name="android:statusBarColor">@color/material_dynamic_secondary50</item>
+    </style>
+</resources>

@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Mon Planning UFR</string>
+    <string name="menu_overview">Accueil</string>
+    <string name="menu_messages">Messages</string>
+    <string name="menu_settings">Paramètres</string>
+
+    <!-- Titles of pages (used for toolbar) -->
+    <string name="title_overview">Mon planning</string>
+    <string name="title_settings">Paramètres</string>
+    <string name="title_group_selection">Sélection du groupe</string>
+    <string name="title_login">Connexion à un compte</string>
+
+    <!-- Planning Widget -->
+    <string name="app_widget_description">Grâce à ce widget, retrouvez votre planning sur votre écran d\'accueil</string>
+    <string name="planning_widget_empty">Rien à afficher!</string>
+
+    <!-- Overview -->
+    <string name="subtitle_overview_empty">Oops, il n\'y a rien à afficher!\nVérifiez vos paramètres et réessayez plus tard.</string>
+
+    <!-- First config -->
+    <string name="subtitle_group_selection">Veuillez sélectionner votre groupe dans la liste ci-dessous</string>
+    <string name="subtitle_first_config_done">La configuration est terminée!\nVous pouvez commencer à utiliser l\'application</string>
+    <string name="subtitle_first_config_welcome">Merci d\'utiliser notre application de gestion de planning UFR!\nConfigurons-la!</string>
+
+    <!-- Login -->
+    <string name="subtitle_login">Vous pouvez vous connecter à votre compte pour obtenir plus d\'informations sur votre emploi du temps, comme le nom de vos professeurs et vos réservations campus sports\nLaissez les champs vide pour une connexion anonyme</string>
+    <string name="field_login_hint">Identifiant</string>
+    <string name="field_password_hint">Mot de passe</string>
+    <string name="error_login_one_field_filled">Seulement un champ est rempli!</string>
+    <string name="error_login_incorrect">Identifiant ou mot de passe incorrect!</string>
+
+    <!-- Components -->
+    <string name="btn_go_back">Précédent</string>
+    <string name="btn_done">Terminer</string>
+    <string name="btn_get_started">Commencer</string>
+    <string name="btn_confirm">Confirmer</string>
+
+    <!-- General preferences -->
+    <string name="general_preferences_header">Géneral</string>
+    <string name="preference_theme_title">Thème</string>
+    <string name="preference_theme_entry_light">Clair</string>
+    <string name="preference_theme_entry_dark">Foncé</string>
+    <string name="preference_theme_entry_system">Système</string>
+
+    <string name="preference_showing_period_title">Période d\'affichage</string>
+    <string name="preference_showing_period_entry_one_day">24 heures</string>
+    <string name="preference_showing_period_entry_two_days">2 jours</string>
+    <string name="preference_showing_period_entry_three_days">3 jours</string>
+    <string name="preference_showing_period_entry_one_week">1 semaine</string>
+    <string name="preference_showing_period_entry_two_weeks">2 semaines</string>
+    <string name="preference_showing_period_entry_one_month">1 mois</string>
+    <string name="preference_showing_period_entry_two_months">2 mois</string>
+
+    <string name="preference_refresh_frequency_title">"Fréquence de raffraichissement"</string>
+    <string name="preference_refresh_frequency_entry_manual">Manuel</string>
+    <string name="preference_refresh_frequency_entry_quarter_hour">15 min</string>
+    <string name="preference_refresh_frequency_entry_half_hour">30 min</string>
+    <string name="preference_refresh_frequency_entry_one_hour">1 heure</string>
+    <string name="preference_refresh_frequency_entry_two_hours">2 heures</string>
+    <string name="preference_refresh_frequency_entry_four_hours">4 heures</string>
+    <string name="preference_refresh_frequency_entry_six_hours">6 heures</string>
+
+    <string name="preference_group_title">Groupe</string>
+    <string name="preference_group_summary">Choisissez votre groupe ici pour obtenir le planning correspondant</string>
+
+    <!-- Other preferences -->
+    <string name="preference_user_display_name_default_value">Connexion anonyme</string>
+</resources>

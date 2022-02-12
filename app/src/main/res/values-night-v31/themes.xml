@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    Having themes.xml for night-v31 because of the priority order of the resource qualifiers.
+    -->
+    <style name="Theme.MyUFRPlanning.AppWidgetContainerParent" parent="Theme.MyUFRPlanning">
+        <item name="appWidgetRadius">@android:dimen/system_app_widget_background_radius</item>
+        <item name="appWidgetInnerRadius">@android:dimen/system_app_widget_inner_radius</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="Theme.MyUFRPlanning" parent="Theme.Material3.DynamicColors.Dark">
+        <!-- Remove the default action bar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="colorSecondaryContainer">@color/material_dynamic_secondary40</item>
+        <item name="android:statusBarColor">@color/material_dynamic_secondary50</item>
+    </style>
+</resources>

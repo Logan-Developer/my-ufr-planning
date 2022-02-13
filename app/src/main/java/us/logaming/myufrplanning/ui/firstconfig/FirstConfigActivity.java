@@ -11,7 +11,7 @@ public class FirstConfigActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.first_config_activity);
+        setContentView(R.layout.activity_first_config);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

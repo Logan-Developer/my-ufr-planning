@@ -31,7 +31,7 @@ public class PlanningWidgetProvider extends AppWidgetProvider {
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
 
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.planning_widget);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_planning);
         views.setRemoteAdapter(R.id.list_view_planning_widget, intent);
         views.setEmptyView(R.id.list_view_planning_widget, R.id.empty_view);
 
@@ -58,7 +58,7 @@ public class PlanningWidgetProvider extends AppWidgetProvider {
     }
     @Override
     public void onDisabled(Context context) {
-        WorkManager.getInstance(context).cancelAllWork();
+        WorkManager.getInstance(context).cancelUniqueWork(context.getString(R.string.planning_widget_update_worker_name));
         super.onDisabled(context);
     }
 

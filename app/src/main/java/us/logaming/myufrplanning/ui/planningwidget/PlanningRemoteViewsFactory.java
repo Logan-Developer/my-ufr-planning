@@ -40,7 +40,7 @@ public class PlanningRemoteViewsFactory implements RemoteViewsService.RemoteView
             } else {
                 this.planningItems = new ArrayList<>();
             }
-        });
+        }, true);
 
         try {
             Thread.sleep(3000);
@@ -51,7 +51,7 @@ public class PlanningRemoteViewsFactory implements RemoteViewsService.RemoteView
 
     @Override
     public RemoteViews getViewAt(int position) {
-        RemoteViews views = new RemoteViews(this.context.getPackageName(), R.layout.planning_widget_item);
+        RemoteViews views = new RemoteViews(this.context.getPackageName(), R.layout.item_planning_widget);
 
         if (position < this.planningItems.size()) {
             views.setTextViewText(R.id.text_title_planning_widget_item, this.planningItems.get(position).getTitle());

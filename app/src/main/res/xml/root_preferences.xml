@@ -6,4 +6,9 @@
         app:key="general_header"
         app:title="@string/general_preferences_header" />
 
+    <Preference
+        app:fragment="us.logaming.myufrplanning.ui.settings.SettingsAlarmCategoryFragment"
+        app:icon="@drawable/ic_alarm"
+        app:key="alarm_header"
+        app:title="@string/alarm_preferences_header" />
 </PreferenceScreen>

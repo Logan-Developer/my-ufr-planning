@@ -89,6 +89,9 @@
 
     <string name="preference_login_key" translatable="false">login_preference</string>
 
+    <!-- Alarm preferences -->
+    <string name="alarm_preferences_header">Alarm</string>
+
     <!-- Other preferences -->
     <string name="preference_local_planning_key" translatable="false">local_planning</string>
     <string name="preference_local_planning_last_modification_key" translatable="false">local_planning_last_modification</string>

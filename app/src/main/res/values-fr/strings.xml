@@ -63,6 +63,9 @@
     <string name="preference_group_title">Groupe</string>
     <string name="preference_group_summary">Choisissez votre groupe ici pour obtenir le planning correspondant</string>
 
+    <!-- Alarm preferences -->
+    <string name="alarm_preferences_header">Alarme</string>
+
     <!-- Other preferences -->
     <string name="preference_user_display_name_default_value">Connexion anonyme</string>
 </resources>

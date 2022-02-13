@@ -33,10 +33,10 @@ public class PlanningRepository {
         this.executor = executor;
     }
 
-    public void fetchLatestPlanning(final RepositoryCallback<List<PlanningItem>> callback) {
+    public void fetchLatestPlanning(final RepositoryCallback<List<PlanningItem>> callback, boolean tryToFetchOnlineVersion) {
         this.executor.execute(() -> {
             try {
-                Result<List<PlanningItem>> result = fetchLatestPlanningSynchronous();
+                Result<List<PlanningItem>> result = fetchLatestPlanningSynchronous(tryToFetchOnlineVersion);
                 callback.onComplete(result);
             } catch (Exception e) {
                 Result<List<PlanningItem>> errorResult = new Result.Error<>(e);
@@ -45,7 +45,7 @@ public class PlanningRepository {
         });
     }
 
-    private Result<List<PlanningItem>> fetchLatestPlanningSynchronous() {
+    private Result<List<PlanningItem>> fetchLatestPlanningSynchronous(boolean tryToFetchOnlineVersion) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String refreshFrequencyString = sharedPreferences.getString(context.getString(R.string.preference_refresh_frequency_key), context.getString(R.string.preference_refresh_frequency_value_half_hour));
         long refreshFrequency = Long.parseLong(refreshFrequencyString);

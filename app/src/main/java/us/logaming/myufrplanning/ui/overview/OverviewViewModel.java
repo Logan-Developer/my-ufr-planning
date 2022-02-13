@@ -34,6 +34,6 @@ public class OverviewViewModel extends ViewModel {
             } else {
                 this.planningItems.postValue(null);
             }
-        });
+        }, true);
     }
 }

@@ -67,7 +67,7 @@ public class PlanningAdapter extends RecyclerView.Adapter<PlanningAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.planning_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_planning, parent, false);
         return new ViewHolder(view);
     }
 

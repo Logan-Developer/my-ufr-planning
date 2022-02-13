@@ -44,8 +44,8 @@ public class PlanningAPIImpl implements PlanningAPI {
     }
 
     @Override
-    public BufferedReader fetchLatestPlanning(String groupId, String nbDays, String studentId, String connectionToken) {
-        StringBuilder urlBuilder = new StringBuilder(URL_BASE_CHECK_PLANNING + "?id=" + groupId + "&jours=" + nbDays + "&mode=2");
+    public BufferedReader fetchLatestPlanning(String groupId, String nbDays, String showCampusSportsReservations, String studentId, String connectionToken) {
+        StringBuilder urlBuilder = new StringBuilder(URL_BASE_CHECK_PLANNING + "?id=" + groupId + "&jours=" + nbDays + "&sports=" + showCampusSportsReservations + "&mode=2");
         if (studentId != null && connectionToken != null) {
             urlBuilder.append("&idetu=").append(studentId).append("&connexion=").append(connectionToken);
         }
@@ -54,8 +54,8 @@ public class PlanningAPIImpl implements PlanningAPI {
     }
 
     @Override
-    public BufferedReader fetchLatestPlanning(String groupId, String nbDays) {
-        return fetchLatestPlanning(groupId, nbDays, null, null);
+    public BufferedReader fetchLatestPlanning(String groupId, String nbDays, String showCampusSportsReservations) {
+        return fetchLatestPlanning(groupId, nbDays, showCampusSportsReservations, null, null);
     }
 
     @Override

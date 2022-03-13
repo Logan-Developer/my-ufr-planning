@@ -4,7 +4,7 @@ Little Android app created for accessing your planning at the UFR, in France.
 
 #### Supported Android versions:
 - Min: Android 6.0 (Marshmallow)
-- Max: Android 12.0 (Snow Cone)
+- Max: Android 12.1 (Snow Cone)
 
 ## Features:
 - Access your planning after selecting a group

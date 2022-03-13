@@ -1,5 +1,4 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListPreference
         app:defaultValue="@string/preference_theme_value_system"
@@ -10,7 +9,7 @@
         app:useSimpleSummaryProvider="true" />
 
     <PreferenceCategory
-        app:title="Planning settings">
+        app:title="@string/general_preferences_planning_subcategory">
 
         <ListPreference
             app:defaultValue="@string/preference_showing_period_value_two_weeks"
@@ -30,10 +29,10 @@
 
         <SwitchPreference
             app:defaultValue="true"
-            app:key="show_campus_sports_reservations"
-            app:title="Campus sports reservations"
-            app:summaryOff="You won't see your campus sports reservations on your planning"
-            app:summaryOn="You will see your campus sports reservations on your planning (requires an account connection)"/>
+            app:key="@string/preference_campus_sports_key"
+            app:title="@string/preference_campus_sports_title"
+            app:summaryOff="@string/preference_campus_sports_summary_off"
+            app:summaryOn="@string/preference_campus_sports_summary_on"/>
 
         <Preference
             app:fragment="us.logaming.myufrplanning.ui.choosegroup.ChooseGroupFragment"

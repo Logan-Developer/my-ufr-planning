@@ -26,7 +26,7 @@ public class PlanningRemoteDataSource {
     public String fetchLatestPlanning() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
         String nbDays = sharedPreferences.getString(context.getString(R.string.preference_showing_period_key), context.getString(R.string.preference_showing_period_value_two_weeks));
-        String showCampusSportsReservations = sharedPreferences.getBoolean("show_campus_sports_reservations", true) ? "O" : "N";
+        String showCampusSportsReservations = sharedPreferences.getBoolean(context.getString(R.string.preference_campus_sports_key), true) ? "O" : "N";
         String groupId = sharedPreferences.getString(context.getString(R.string.preference_group_id_key),"0");
         String userId = sharedPreferences.getString(context.getString(R.string.preference_user_id_key),null);
         String connectionToken = sharedPreferences.getString(context.getString(R.string.preference_connection_token_key),null);

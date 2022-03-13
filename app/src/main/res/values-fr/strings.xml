@@ -37,6 +37,7 @@
 
     <!-- General preferences -->
     <string name="general_preferences_header">Géneral</string>
+    <string name="general_preferences_planning_subcategory">Emploi du temps</string>
     <string name="preference_theme_title">Thème</string>
     <string name="preference_theme_entry_light">Clair</string>
     <string name="preference_theme_entry_dark">Foncé</string>
@@ -63,8 +64,13 @@
     <string name="preference_group_title">Groupe</string>
     <string name="preference_group_summary">Choisissez votre groupe ici pour obtenir le planning correspondant</string>
 
+    <string name="preference_campus_sports_title">Réservations campus sports</string>
+    <string name="preference_campus_sports_summary_off">Vos réservations campus sports ne s\'afficheront pas sur votre planning</string>
+    <string name="preference_campus_sports_summary_on">Vos réservations campus sports s\'afficheront sur votre planning (nécessite une connexion à votre compte)</string>
+
     <!-- Alarm preferences -->
     <string name="alarm_preferences_header">Alarme</string>
+    <string name="preference_time_undefined">Non défini</string>
 
     <!-- Other preferences -->
     <string name="preference_user_display_name_default_value">Connexion anonyme</string>

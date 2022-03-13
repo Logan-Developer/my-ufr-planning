@@ -1,4 +1,4 @@
-package us.logaming.myufrplanning.ui;
+package us.logaming.myufrplanning.ui.choosegroup;
 
 import android.view.LayoutInflater;
 import android.view.View;

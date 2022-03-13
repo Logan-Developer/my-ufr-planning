@@ -27,7 +27,6 @@ import java.util.concurrent.TimeUnit;
 import us.logaming.myufrplanning.R;
 import us.logaming.myufrplanning.UpdateWidgetWorker;
 import us.logaming.myufrplanning.data.model.GroupItem;
-import us.logaming.myufrplanning.ui.GroupsAdapter;
 import us.logaming.myufrplanning.ui.login.LoginFragment;
 import us.logaming.myufrplanning.ui.settings.SettingsActivity;
 

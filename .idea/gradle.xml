@@ -9,8 +9,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="/mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning" />
-            <option value="/mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanning/app" />
+            <option value="/mnt/Linux-Data/Documents/AndroidStudioProjects/MyUFRPlanning" />
+            <option value="/mnt/Linux-Data/Documents/AndroidStudioProjects/MyUFRPlanning/app" />
           </set>
         </option>
       </GradleProjectSettings>

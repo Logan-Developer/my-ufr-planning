@@ -17,6 +17,10 @@
 
         <item name="colorSecondaryContainer">@color/material_dynamic_secondary80</item>
 
-        <item name="android:statusBarColor">@color/material_dynamic_secondary50</item>
+        <item name="colorSurface">@color/material_dynamic_secondary95</item>
+        <item name="colorSurfaceVariant">@color/material_dynamic_secondary95</item>
+
+        <item name="android:statusBarColor">@color/material_dynamic_secondary95</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

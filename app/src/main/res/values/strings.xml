@@ -4,8 +4,6 @@
     <string name="menu_messages">Messages</string>
     <string name="menu_settings">Settings</string>
 
-    <string name="planning_string_delimiter" translatable="false">#s#</string>
-
     <!-- Titles of pages (used for toolbar) -->
     <string name="title_overview">My planning</string>
     <string name="title_settings">Settings</string>
@@ -40,6 +38,7 @@
 
     <!-- General preferences -->
     <string name="general_preferences_header">General</string>
+    <string name="general_preferences_planning_subcategory">Planning</string>
     <string name="preference_theme_key" translatable="false">theme</string>
     <string name="preference_theme_title">Theme</string>
     <string name="preference_theme_entry_light">Light</string>
@@ -89,8 +88,29 @@
 
     <string name="preference_login_key" translatable="false">login_preference</string>
 
+    <string name="preference_campus_sports_key" translatable="false">show_campus_sports_reservations</string>
+    <string name="preference_campus_sports_title">Campus sports reservations</string>
+    <string name="preference_campus_sports_summary_off">You won\'t see your campus sports reservations on your planning</string>
+    <string name="preference_campus_sports_summary_on">You will see your campus sports reservations on your planning (requires an account connection)</string>
+
     <!-- Alarm preferences -->
     <string name="alarm_preferences_header">Alarm</string>
+    <string name="preference_enable_alarm_global_key" translatable="false">enable_alarm_global</string>
+    <string name="preference_enable_alarm_8am_key" translatable="false">enable_alarm_8am</string>
+    <string name="preference_time_alarm_8am_hour_key" translatable="false">time_alarm_8am_hour</string>
+    <string name="preference_time_alarm_8am_minutes_key" translatable="false">time_alarm_8am_minutes</string>
+    <string name="preference_enable_alarm_9h30am_key" translatable="false">enable_alarm_9h30am</string>
+    <string name="preference_time_alarm_9h30am_hour_key" translatable="false">time_alarm_9h30am_hour</string>
+    <string name="preference_time_alarm_9h30am_minutes_key" translatable="false">time_alarm_9h30am_minutes</string>
+    <string name="preference_enable_alarm_11am_key" translatable="false">enable_alarm_11am</string>
+    <string name="preference_time_alarm_11am_hour_key" translatable="false">time_alarm_11am_hour</string>
+    <string name="preference_time_alarm_11am_minutes_key" translatable="false">time_alarm_11am_minutes</string>
+    <string name="preference_enable_alarm_other_key" translatable="false">enable_alarm_other</string>
+    <string name="preference_time_alarm_other_hour_key" translatable="false">time_alarm_other_hour</string>
+    <string name="preference_time_alarm_other_minutes_key" translatable="false">time_alarm_other_minutes</string>
+    <string name="preference_next_alarm_timestamp_key" translatable="false">next_alarm</string>
+    <string name="preference_time_picker_tag" translatable="false">timePicker</string>
+    <string name="preference_time_undefined">Undefined</string>
 
     <!-- Other preferences -->
     <string name="preference_local_planning_key" translatable="false">local_planning</string>
@@ -104,4 +124,6 @@
 
     <!-- Miscellaneous -->
     <string name="first_config_back_stack" translatable="false">first_config_back_stack</string>
+    <string name="planning_string_delimiter" translatable="false">#s#</string>
+    <string name="set_alarm_worker_name" translatable="false">SetAlarmWorker</string>
 </resources>

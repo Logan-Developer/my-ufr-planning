@@ -7,15 +7,20 @@
     android:orientation="vertical"
     tools:context=".ui.settings.SettingsAlarmCategoryFragment">
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/switch_alarm_global"
-        android:text="Global switch" />
+        android:layout_margin="@dimen/margin_medium">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_medium" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_medium"
+            android:id="@+id/switch_alarm_global"
+            android:text="Global switch" />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:layout_width="match_parent"

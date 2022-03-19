@@ -113,8 +113,8 @@ public class SettingsAlarmCategoryFragment extends Fragment {
         root.findViewById(R.id.timepicker_alarm_9h30am).setOnClickListener(v -> {
             MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
                     .setTimeFormat(getClockFormat())
-                    .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_hour_key), -1))
-                    .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_minutes_key), -1))
+                    .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_hour_key), calendar.get(Calendar.HOUR_OF_DAY)))
+                    .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_minutes_key), calendar.get(Calendar.MINUTE)))
                     .build();
             timePicker.show(requireActivity().getSupportFragmentManager(), getString(R.string.preference_time_picker_tag));
             timePicker.addOnPositiveButtonClickListener(v1 -> {
@@ -130,8 +130,8 @@ public class SettingsAlarmCategoryFragment extends Fragment {
         root.findViewById(R.id.timepicker_alarm_11am).setOnClickListener(v -> {
             MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
                     .setTimeFormat(getClockFormat())
-                    .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_hour_key), -1))
-                    .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_minutes_key), -1))
+                    .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_hour_key), calendar.get(Calendar.HOUR_OF_DAY)))
+                    .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_minutes_key), calendar.get(Calendar.MINUTE)))
                     .build();
             timePicker.show(requireActivity().getSupportFragmentManager(), getString(R.string.preference_time_picker_tag));
             timePicker.addOnPositiveButtonClickListener(v1 -> {
@@ -147,8 +147,8 @@ public class SettingsAlarmCategoryFragment extends Fragment {
         root.findViewById(R.id.timepicker_alarm_other).setOnClickListener(v -> {
             MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
                     .setTimeFormat(getClockFormat())
-                    .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_hour_key), -1))
-                    .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_minutes_key), -1))
+                    .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_hour_key), calendar.get(Calendar.HOUR_OF_DAY)))
+                    .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_minutes_key), calendar.get(Calendar.MINUTE)))
                     .build();
             timePicker.show(requireActivity().getSupportFragmentManager(), getString(R.string.preference_time_picker_tag));
             timePicker.addOnPositiveButtonClickListener(v1 -> {

@@ -3,6 +3,7 @@ package us.logaming.myufrplanning.ui.login;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
@@ -19,13 +20,17 @@ import java.util.Objects;
 import java.util.concurrent.Executors;
 
 import us.logaming.myufrplanning.R;
+import us.logaming.myufrplanning.ui.choosegroup.ChooseGroupFragment;
 import us.logaming.myufrplanning.ui.firstconfig.FirstConfigDoneFragment;
+import us.logaming.myufrplanning.ui.firstconfig.FirstConfigWelcomeFragment;
 import us.logaming.myufrplanning.ui.settings.SettingsActivity;
 
 public class LoginFragment extends Fragment {
     private LoginViewModel viewModel;
 
     private TextInputLayout textInputLogin, textInputPassword;
+
+    private OnBackPressedCallback onBackPressedCallback;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -42,11 +47,26 @@ public class LoginFragment extends Fragment {
         this.textInputLogin = root.findViewById(R.id.text_input_login);
         this.textInputPassword = root.findViewById(R.id.text_input_password);
 
+        this.onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (requireActivity().getLocalClassName().endsWith(SettingsActivity.class.getSimpleName())) {
+                    getParentFragmentManager().popBackStack();
+                }
+                else {
+                    getParentFragmentManager().beginTransaction().replace(R.id.container_first_config, ChooseGroupFragment.newInstance())
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .commit();
+                }
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this.onBackPressedCallback);
+
         if (requireActivity().getLocalClassName().endsWith(SettingsActivity.class.getSimpleName())) {
             btnGoBack.setVisibility(View.GONE);
         }
         else {
-            btnGoBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+            btnGoBack.setOnClickListener(v -> this.onBackPressedCallback.handleOnBackPressed());
         }
         this.viewModel = new LoginViewModel(Executors.newFixedThreadPool(4));
 
@@ -59,7 +79,15 @@ public class LoginFragment extends Fragment {
                         .putString(requireContext().getString(R.string.preference_user_display_name_key),
                                 requireContext().getString(R.string.preference_user_display_name_default_value))
                         .apply();
-                getParentFragmentManager().popBackStack();
+
+                if (requireActivity().getLocalClassName().endsWith(SettingsActivity.class.getSimpleName())) {
+                    this.onBackPressedCallback.handleOnBackPressed();
+                }
+                else {
+                    getParentFragmentManager().beginTransaction().replace(R.id.container_first_config, FirstConfigDoneFragment.newInstance())
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .commit();
+                }
             }
             else if (isLoginFieldEmpty() || isPasswordFieldEmpty()){
                 Toast.makeText(getContext(), requireContext().getString(R.string.error_login_one_field_filled), Toast.LENGTH_SHORT).show();
@@ -77,12 +105,11 @@ public class LoginFragment extends Fragment {
                                 .apply();
 
                         if (requireActivity().getLocalClassName().endsWith(SettingsActivity.class.getSimpleName())) {
-                            getParentFragmentManager().popBackStack();
+                            this.onBackPressedCallback.handleOnBackPressed();
                         }
                         else {
                             getParentFragmentManager().beginTransaction().replace(R.id.container_first_config, FirstConfigDoneFragment.newInstance())
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                    .addToBackStack(getString(R.string.first_config_back_stack))
                                     .commit();
                         }
                     }

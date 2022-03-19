@@ -19,14 +19,4 @@ public class FirstConfigActivity extends AppCompatActivity {
                     .commitNow();
         }
     }
-
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        }
-        else {
-            super.onBackPressed();
-        }
-    }
 }

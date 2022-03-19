@@ -2,6 +2,7 @@ package us.logaming.myufrplanning.ui.firstconfig;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -26,10 +27,17 @@ public class FirstConfigWelcomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_first_config_welcome, container, false);
 
+        OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                requireActivity().finish();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(onBackPressedCallback);
+
         MaterialButton getStartedButton = root.findViewById(R.id.btn_first_config_get_started);
         getStartedButton.setOnClickListener(v -> getParentFragmentManager().beginTransaction().replace(R.id.container_first_config, ChooseGroupFragment.newInstance())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack(getString(R.string.first_config_back_stack))
                 .commit());
         return root;
     }

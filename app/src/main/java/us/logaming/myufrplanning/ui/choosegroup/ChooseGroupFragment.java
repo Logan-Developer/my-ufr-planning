@@ -3,6 +3,7 @@ package us.logaming.myufrplanning.ui.choosegroup;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
@@ -27,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 import us.logaming.myufrplanning.R;
 import us.logaming.myufrplanning.UpdateWidgetWorker;
 import us.logaming.myufrplanning.data.model.GroupItem;
+import us.logaming.myufrplanning.ui.firstconfig.FirstConfigWelcomeFragment;
 import us.logaming.myufrplanning.ui.login.LoginFragment;
 import us.logaming.myufrplanning.ui.settings.SettingsActivity;
 
@@ -35,6 +37,7 @@ public class ChooseGroupFragment extends Fragment implements GroupsAdapter.OnGro
     private ChooseGroupViewModel viewModel;
     private RecyclerView groupsRecyclerView;
     private List<GroupItem> groupItems;
+    private OnBackPressedCallback onBackPressedCallback;
 
     public static ChooseGroupFragment newInstance() {
         return new ChooseGroupFragment();
@@ -48,11 +51,26 @@ public class ChooseGroupFragment extends Fragment implements GroupsAdapter.OnGro
 
         MaterialButton btnGoBack = root.findViewById(R.id.btn_first_config_go_back);
 
+        this.onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (requireActivity().getLocalClassName().endsWith(SettingsActivity.class.getSimpleName())) {
+                    getParentFragmentManager().popBackStack();
+                }
+                else {
+                    getParentFragmentManager().beginTransaction().replace(R.id.container_first_config, FirstConfigWelcomeFragment.newInstance())
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .commit();
+                }
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this.onBackPressedCallback);
+
         if (requireActivity().getLocalClassName().endsWith(SettingsActivity.class.getSimpleName())) {
             btnGoBack.setVisibility(View.GONE);
         }
         else {
-            btnGoBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+            btnGoBack.setOnClickListener(v -> this.onBackPressedCallback.handleOnBackPressed());
         }
 
         this.groupItems = new ArrayList<>();
@@ -82,22 +100,19 @@ public class ChooseGroupFragment extends Fragment implements GroupsAdapter.OnGro
                     this.groupItems = groupItems;
                     this.groupsRecyclerView.setAdapter(new GroupsAdapter(groupItems, this));
                 }
-                else {
+                else if (groupItems.size() == 1){
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
-                    sharedPreferences.edit()
-                            .putBoolean(getString(R.string.preference_start_first_config_key), false)
-                            .putString(getString(R.string.preference_group_id_key), groupId)
-                            .apply();
+                    sharedPreferences.edit().putString(getString(R.string.preference_group_id_key), groupId).apply();
 
                     if (requireActivity().getLocalClassName().endsWith(SettingsActivity.class.getSimpleName())) {
-                        Objects.requireNonNull(PreferenceManager.getDefaultSharedPreferences(requireContext())).edit().putLong(getString(R.string.preference_local_planning_last_modification_key), 0).apply();
-                        String refreshFrequencyString = Objects.requireNonNull(PreferenceManager.getDefaultSharedPreferences(requireContext())).getString(getString(R.string.preference_refresh_frequency_key), getString(R.string.preference_refresh_frequency_entry_half_hour));
+                        sharedPreferences.edit().putLong(getString(R.string.preference_local_planning_last_modification_key), 0).apply();
+                        String refreshFrequencyString = sharedPreferences.getString(getString(R.string.preference_refresh_frequency_key), getString(R.string.preference_refresh_frequency_entry_half_hour));
                         long refreshFrequency = Long.parseLong(refreshFrequencyString);
 
                         PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(UpdateWidgetWorker.class, refreshFrequency, TimeUnit.MILLISECONDS).build();
                         WorkManager.getInstance(this.requireContext()).enqueueUniquePeriodicWork(getString(R.string.planning_widget_update_worker_name), ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
 
-                        getParentFragmentManager().popBackStack();
+                        this.onBackPressedCallback.handleOnBackPressed();
                     }
                     else {
                         getParentFragmentManager().beginTransaction().replace(R.id.container_first_config, LoginFragment.newInstance())

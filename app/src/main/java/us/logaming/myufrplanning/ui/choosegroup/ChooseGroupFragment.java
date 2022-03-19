@@ -117,7 +117,6 @@ public class ChooseGroupFragment extends Fragment implements GroupsAdapter.OnGro
                     else {
                         getParentFragmentManager().beginTransaction().replace(R.id.container_first_config, LoginFragment.newInstance())
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                .addToBackStack(getString(R.string.first_config_back_stack))
                                 .commit();
                     }
                 }

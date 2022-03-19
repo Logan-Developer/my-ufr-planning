@@ -133,7 +133,6 @@
     <string name="notifications_display_over_other_apps_text_long">Click here to enable. This will allow My UFR Planning setting up alarms automatically in background.</string>
 
     <!-- Miscellaneous -->
-    <string name="first_config_back_stack" translatable="false">first_config_back_stack</string>
     <string name="planning_string_delimiter" translatable="false">#s#</string>
     <string name="set_alarm_worker_name" translatable="false">SetAlarmWorker</string>
 </resources>

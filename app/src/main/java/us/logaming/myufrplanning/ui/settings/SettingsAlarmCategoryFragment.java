@@ -18,6 +18,7 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textview.MaterialTextView;
@@ -36,6 +37,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
 
     private SwitchMaterial switchGlobal, switch8Am, switch9h30Am, switch11Am, switchOther;
     private MaterialTextView textSummaryAlarm8Am, textSummaryAlarm9h30Am, textSummaryAlarm11Am, textSummaryAlarmOther;
+    private LinearLayout layoutAlarms;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,10 +56,13 @@ public class SettingsAlarmCategoryFragment extends Fragment {
         this.textSummaryAlarm9h30Am = root.findViewById(R.id.text_alarm_summary_9h30am);
         this.textSummaryAlarm11Am = root.findViewById(R.id.text_alarm_summary_11am);
         this.textSummaryAlarmOther = root.findViewById(R.id.text_alarm_summary_other);
+        this.layoutAlarms = root.findViewById(R.id.layout_settings_alarms);
 
         retrieveAllFieldsValue();
 
         this.switchGlobal.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            this.layoutAlarms.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+
             this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_global_key), isChecked).apply();
             if (isChecked) {
                 if (!Settings.canDrawOverlays(getContext())) {
@@ -77,8 +82,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
 
                     NotificationManagerCompat.from(requireContext()).notify(1, builder.build());
                 }
-                PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(SetAlarmWorker.class, 30, TimeUnit.MINUTES).build();
-                WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(getString(R.string.set_alarm_worker_name), ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
+                refreshSetAlarmWorker();
             }
             else {
                 WorkManager.getInstance(requireContext()).cancelUniqueWork(getString(R.string.set_alarm_worker_name));
@@ -86,10 +90,22 @@ public class SettingsAlarmCategoryFragment extends Fragment {
             }
         });
 
-        this.switch8Am.setOnCheckedChangeListener((buttonView, isChecked) -> this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_8am_key), isChecked).apply());
-        this.switch9h30Am.setOnCheckedChangeListener((buttonView, isChecked) -> this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_9h30am_key), isChecked).apply());
-        this.switch11Am.setOnCheckedChangeListener((buttonView, isChecked) -> this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_11am_key), isChecked).apply());
-        this.switchOther.setOnCheckedChangeListener((buttonView, isChecked) -> this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_other_key), isChecked).apply());
+        this.switch8Am.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_8am_key), isChecked).apply();
+            refreshSetAlarmWorker();
+        });
+        this.switch9h30Am.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_9h30am_key), isChecked).apply();
+            refreshSetAlarmWorker();
+        });
+        this.switch11Am.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_11am_key), isChecked).apply();
+            refreshSetAlarmWorker();
+        });
+        this.switchOther.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_other_key), isChecked).apply();
+            refreshSetAlarmWorker();
+        });
 
         Calendar calendar = Calendar.getInstance();
 
@@ -107,6 +123,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
                 this.sharedPreferences.edit().putInt(getString(R.string.preference_time_alarm_8am_hour_key), timePicker.getHour())
                         .putInt(getString(R.string.preference_time_alarm_8am_minutes_key), timePicker.getMinute())
                         .apply();
+                refreshSetAlarmWorker();
             });
         });
 
@@ -124,6 +141,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
                 this.sharedPreferences.edit().putInt(getString(R.string.preference_time_alarm_9h30am_hour_key), timePicker.getHour())
                         .putInt(getString(R.string.preference_time_alarm_9h30am_minutes_key), timePicker.getMinute())
                         .apply();
+                refreshSetAlarmWorker();
             });
         });
 
@@ -141,6 +159,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
                 this.sharedPreferences.edit().putInt(getString(R.string.preference_time_alarm_11am_hour_key), timePicker.getHour())
                         .putInt(getString(R.string.preference_time_alarm_11am_minutes_key), timePicker.getMinute())
                         .apply();
+                refreshSetAlarmWorker();
             });
         });
 
@@ -158,6 +177,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
                 this.sharedPreferences.edit().putInt(getString(R.string.preference_time_alarm_other_hour_key), timePicker.getHour())
                         .putInt(getString(R.string.preference_time_alarm_other_minutes_key), timePicker.getMinute())
                         .apply();
+                refreshSetAlarmWorker();
             });
         });
 
@@ -227,5 +247,10 @@ public class SettingsAlarmCategoryFragment extends Fragment {
 
     private int getClockFormat() {
         return android.text.format.DateFormat.is24HourFormat(requireContext()) ? TimeFormat.CLOCK_24H : TimeFormat.CLOCK_12H;
+    }
+
+    private void refreshSetAlarmWorker() {
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(SetAlarmWorker.class, 30, TimeUnit.MINUTES).build();
+        WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(getString(R.string.set_alarm_worker_name), ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
     }
 }

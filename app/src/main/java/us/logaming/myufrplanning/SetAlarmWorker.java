@@ -56,6 +56,10 @@ public class SetAlarmWorker extends Worker {
     }
 
     private void setAlarmIfNeeded(String firstCourseTime, int hourAlarm, int minuteAlarm) {
+        if (hourAlarm == -1 || minuteAlarm == -1) {
+            return;
+        }
+
         this.planningRepository.fetchLatestPlanning(result -> {
             if (result instanceof us.logaming.myufrplanning.data.Result.Success) {
                 List<PlanningItem> planningItems = ((us.logaming.myufrplanning.data.Result.Success<List<PlanningItem>>) result).data;

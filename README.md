@@ -1,6 +1,6 @@
 # my-ufr-planning
 
-Little Android app created for accessing your planning at the UFR, in France.
+Small Android app created for accessing your planning at the UFR, in France.
 
 #### Supported Android versions:
 - Min: Android 6.0 (Marshmallow)

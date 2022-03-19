@@ -3,9 +3,7 @@ package us.logaming.myufrplanning;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.provider.AlarmClock;
-import android.provider.Settings;
 
 import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
@@ -36,12 +34,6 @@ public class SetAlarmWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        if (!Settings.canDrawOverlays(context)) {
-            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + context.getPackageName()))
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getApplicationContext().startActivity(intent);
-        }
-
         if (sharedPreferences.getLong(context.getString(R.string.preference_next_alarm_timestamp_key), 0) < Calendar.getInstance().getTimeInMillis()) {
             if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_8am_key), false)) {
                 setAlarmIfNeeded("8h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1),

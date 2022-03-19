@@ -74,4 +74,13 @@
 
     <!-- Other preferences -->
     <string name="preference_user_display_name_default_value">Connexion anonyme</string>
+
+    <!-- Notifications - Channels -->
+    <string name="notifications_channel_permissions_name">Permissions</string>
+    <string name="notifications_channel_permissions_description">Demande la permission d\'effectuer certaines tâches</string>
+
+    <!-- Notifications - Display over other apps -->
+    <string name="notifications_display_over_other_apps_title">Se superposer aux autres applis</string>
+    <string name="notifications_display_over_other_apps_text_short">Appuyez ici pour activer</string>
+    <string name="notifications_display_over_other_apps_text_long">Appuyez ici pour activer. Cela va laisser Mon Planning UFR paramétrer des alarmes automatiquement en arrière-plan.</string>
 </resources>

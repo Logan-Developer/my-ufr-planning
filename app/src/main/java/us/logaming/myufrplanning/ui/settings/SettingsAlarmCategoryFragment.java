@@ -1,14 +1,20 @@
 package us.logaming.myufrplanning.ui.settings;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +66,23 @@ public class SettingsAlarmCategoryFragment extends Fragment {
         this.switchGlobal.setOnCheckedChangeListener((buttonView, isChecked) -> {
             this.sharedPreferences.edit().putBoolean(getString(R.string.preference_enable_alarm_global_key), isChecked).apply();
             if (isChecked) {
+                if (!Settings.canDrawOverlays(getContext())) {
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + requireContext().getPackageName()))
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), getString(R.string.notifications_channel_permissions_id))
+                            .setSmallIcon(R.drawable.ic_launcher)
+                            .setContentTitle(getString(R.string.notifications_display_over_other_apps_title))
+                            .setContentText(getString(R.string.notifications_display_over_other_apps_text_short))
+                            .setStyle(new NotificationCompat.BigTextStyle()
+                                    .bigText(getString(R.string.notifications_display_over_other_apps_text_long)))
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true);
+
+                    NotificationManagerCompat.from(requireContext()).notify(1, builder.build());
+                }
                 PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(SetAlarmWorker.class, 30, TimeUnit.MINUTES).build();
                 WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(getString(R.string.set_alarm_worker_name), ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
             }

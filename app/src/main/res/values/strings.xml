@@ -122,6 +122,16 @@
     <string name="preference_user_display_name_key" translatable="false">user_display_name</string>
     <string name="preference_user_display_name_default_value">Anonymous connection</string>
 
+    <!-- Notifications - Channels -->
+    <string name="notifications_channel_permissions_name">Permissions</string>
+    <string name="notifications_channel_permissions_description">Asks permissions for doing some tasks</string>
+    <string name="notifications_channel_permissions_id" translatable="false">PERMISSIONS_NOTIFICATION_CHANNEL</string>
+
+    <!-- Notifications - Display over other apps -->
+    <string name="notifications_display_over_other_apps_title">Display over other apps</string>
+    <string name="notifications_display_over_other_apps_text_short">Click here to enable</string>
+    <string name="notifications_display_over_other_apps_text_long">Click here to enable. This will allow My UFR Planning setting up alarms automatically in background.</string>
+
     <!-- Miscellaneous -->
     <string name="first_config_back_stack" translatable="false">first_config_back_stack</string>
     <string name="planning_string_delimiter" translatable="false">#s#</string>

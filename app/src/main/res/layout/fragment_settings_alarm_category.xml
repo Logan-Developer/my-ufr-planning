@@ -8,173 +8,240 @@
     tools:context=".ui.settings.SettingsAlarmCategoryFragment">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Filled"
+        style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_medium">
+        android:layout_margin="@dimen/margin_medium"
+        app:cardElevation="80dp">
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/margin_medium"
             android:id="@+id/switch_alarm_global"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_medium"
             android:text="Global switch" />
 
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/switch_alarm_8am"
-        android:text="Alarm for first course tomorrow at 8 A.M." />
-
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/timepicker_alarm_8am"
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checkable="true"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="0dp">
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginVertical="@dimen/margin_medium">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_small"
             android:orientation="horizontal">
 
-            <com.google.android.material.textview.MaterialTextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/margin_medium"
-                android:text="Set the time"
-                android:textAppearance="?attr/textAppearanceTitleMedium" />
+                android:layout_weight="3"
+                android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_alarm_summary_8am"
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:text="Alarm for first class tomorrow at 8 A.M."/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/timepicker_alarm_8am"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="0dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_alarm_summary_8am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/margin_medium"
+                        android:text="undefined"
+                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="@dimen/margin_medium"
-                android:text="undefined"
-                android:textAppearance="?attr/textAppearanceBodySmall" />
+                android:id="@+id/switch_alarm_8am" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/switch_alarm_9h30am"
-        android:text="Alarm for first course tomorrow at 9h30 A.M." />
+
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/timepicker_alarm_9h30am"
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checkable="true"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="0dp">
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginVertical="@dimen/margin_medium">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_small"
             android:orientation="horizontal">
 
-            <com.google.android.material.textview.MaterialTextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/margin_medium"
-                android:text="Set the time"
-                android:textAppearance="?attr/textAppearanceTitleMedium" />
+                android:layout_weight="3"
+                android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_alarm_summary_9h30am"
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:text="Alarm for first class tomorrow at 9h30 A.M."/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/timepicker_alarm_9h30am"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="0dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_alarm_summary_9h30am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/margin_medium"
+                        android:text="undefined"
+                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="@dimen/margin_medium"
-                android:text="undefined"
-                android:textAppearance="?attr/textAppearanceBodySmall" />
+                android:id="@+id/switch_alarm_9h30am" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/switch_alarm_11am"
-        android:text="Alarm for first course tomorrow at 11 A.M." />
+
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/timepicker_alarm_11am"
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checkable="true"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="0dp">
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginVertical="@dimen/margin_medium">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_small"
             android:orientation="horizontal">
 
-            <com.google.android.material.textview.MaterialTextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/margin_medium"
-                android:text="Set the time"
-                android:textAppearance="?attr/textAppearanceTitleMedium" />
+                android:layout_weight="3"
+                android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_alarm_summary_11am"
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:text="Alarm for first class tomorrow at 11 A.M."/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/timepicker_alarm_11am"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="0dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_alarm_summary_11am"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/margin_medium"
+                        android:text="undefined"
+                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="@dimen/margin_medium"
-                android:text="undefined"
-                android:textAppearance="?attr/textAppearanceBodySmall" />
+                android:id="@+id/switch_alarm_11am" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/switch_alarm_other"
-        android:text="Alarm for first course tomorrow at another time" />
+
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/timepicker_alarm_other"
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checkable="true"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="0dp">
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginVertical="@dimen/margin_medium">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_small"
             android:orientation="horizontal">
 
-            <com.google.android.material.textview.MaterialTextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/margin_medium"
-                android:text="Set the time"
-                android:textAppearance="?attr/textAppearanceTitleMedium" />
+                android:layout_weight="3"
+                android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_alarm_summary_other"
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:text="Alarm for first class tomorrow at another time"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/timepicker_alarm_other"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="0dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_alarm_summary_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/margin_medium"
+                        android:text="undefined"
+                        android:textAppearance="?attr/textAppearanceBodyLarge" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="@dimen/margin_medium"
-                android:text="undefined"
-                android:textAppearance="?attr/textAppearanceBodySmall" />
+                android:id="@+id/switch_alarm_other" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

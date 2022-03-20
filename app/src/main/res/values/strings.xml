@@ -111,6 +111,11 @@
     <string name="preference_next_alarm_timestamp_key" translatable="false">next_alarm</string>
     <string name="preference_time_picker_tag" translatable="false">timePicker</string>
     <string name="preference_time_undefined">Undefined</string>
+    <string name="preference_alarm_global_switch_title">Set wake-up alarms automatically</string>
+    <string name="preference_alarm_8am_title">Alarm for first class tomorrow at 8 A.M.</string>
+    <string name="preference_alarm_9h30am_title">Alarm for first class tomorrow at 9h30 A.M.</string>
+    <string name="preference_alarm_11am_title">Alarm for first class tomorrow at 11 A.M.</string>
+    <string name="preference_alarm_other_title">Alarm for first class tomorrow at another time</string>
 
     <!-- Other preferences -->
     <string name="preference_local_planning_key" translatable="false">local_planning</string>

@@ -71,6 +71,11 @@
     <!-- Alarm preferences -->
     <string name="alarm_preferences_header">Alarme</string>
     <string name="preference_time_undefined">Non défini</string>
+    <string name="preference_alarm_global_switch_title">Créer des réveils automatiquement</string>
+    <string name="preference_alarm_8am_title">Réveil pour 1er cours demain à 8h</string>
+    <string name="preference_alarm_9h30am_title">Réveil pour 1er cours demain à 9h30</string>
+    <string name="preference_alarm_11am_title">Réveil pour 1er cours demain à 11h</string>
+    <string name="preference_alarm_other_title">Réveil pour 1er cours demain à une autre heure</string>
 
     <!-- Other preferences -->
     <string name="preference_user_display_name_default_value">Connexion anonyme</string>

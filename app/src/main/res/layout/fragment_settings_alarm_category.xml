@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:padding="@dimen/margin_medium"
             android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:text="Set wake-up alarms automatically" />
+            android:text="@string/preference_alarm_global_switch_title" />
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
-                        android:text="Alarm for first class tomorrow at 8 A.M."/>
+                        android:text="@string/preference_alarm_8am_title"/>
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/timepicker_alarm_8am"
@@ -73,7 +73,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:padding="@dimen/margin_medium"
-                            android:text="undefined"
+                            android:text="@string/preference_time_undefined"
                             android:textAppearance="?attr/textAppearanceBodyLarge" />
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
-                        android:text="Alarm for first class tomorrow at 9h30 A.M."/>
+                        android:text="@string/preference_alarm_9h30am_title"/>
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/timepicker_alarm_9h30am"
@@ -128,7 +128,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:padding="@dimen/margin_medium"
-                            android:text="undefined"
+                            android:text="@string/preference_time_undefined"
                             android:textAppearance="?attr/textAppearanceBodyLarge" />
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
@@ -165,7 +165,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
-                        android:text="Alarm for first class tomorrow at 11 A.M."/>
+                        android:text="@string/preference_alarm_11am_title"/>
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/timepicker_alarm_11am"
@@ -183,7 +183,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:padding="@dimen/margin_medium"
-                            android:text="undefined"
+                            android:text="@string/preference_time_undefined"
                             android:textAppearance="?attr/textAppearanceBodyLarge" />
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
@@ -220,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
-                        android:text="Alarm for first class tomorrow at another time"/>
+                        android:text="@string/preference_alarm_other_title"/>
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/timepicker_alarm_other"
@@ -238,7 +238,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:padding="@dimen/margin_medium"
-                            android:text="undefined"
+                            android:text="@string/preference_time_undefined"
                             android:textAppearance="?attr/textAppearanceBodyLarge" />
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>

@@ -74,7 +74,6 @@ public class SetAlarmWorker extends Worker {
 
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(new Date());
-                    calendar.add(Calendar.DAY_OF_MONTH, 1);
                     calendar.set(Calendar.HOUR, hourAlarm + 1);
                     calendar.set(Calendar.MINUTE, minuteAlarm);
 

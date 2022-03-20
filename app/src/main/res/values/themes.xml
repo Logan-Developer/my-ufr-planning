@@ -4,6 +4,8 @@
         <!-- Remove the default action bar -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="colorSurface">@color/card_subject_background</item>
     </style>
 
     <style name="Theme.MyUFRPlanning.AppWidgetContainerParent" parent="Theme.MyUFRPlanning">

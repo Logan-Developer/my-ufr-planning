@@ -101,10 +101,16 @@ public class PlanningAdapter extends RecyclerView.Adapter<PlanningAdapter.ViewHo
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     holder.getCardView().setCardBackgroundColor(this.context.getColor(com.google.android.material.R.color.material_dynamic_secondary95));
                 }
+                else {
+                    holder.getCardView().setCardBackgroundColor(this.context.getColor(R.color.card_subject_background));
+                }
             }
             else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     holder.getCardView().setCardBackgroundColor(this.context.getColor(com.google.android.material.R.color.material_dynamic_secondary40));
+                }
+                else {
+                    holder.getCardView().setCardBackgroundColor(this.context.getColor(R.color.card_subject_background_dark));
                 }
             }
             holder.getCardView().setRadius(context.getResources().getDimension(com.google.android.material.R.dimen.mtrl_card_corner_radius));
@@ -116,10 +122,16 @@ public class PlanningAdapter extends RecyclerView.Adapter<PlanningAdapter.ViewHo
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     holder.getCardView().setCardBackgroundColor(this.context.getColor(com.google.android.material.R.color.material_dynamic_secondary80));
                 }
+                else {
+                    holder.getCardView().setCardBackgroundColor(this.context.getColor(R.color.card_date_background));
+                }
             }
             else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     holder.getCardView().setCardBackgroundColor(this.context.getColor(com.google.android.material.R.color.material_dynamic_secondary20));
+                }
+                else {
+                    holder.getCardView().setCardBackgroundColor(this.context.getColor(R.color.card_date_background_dark));
                 }
             }
             holder.getCardView().setRadius(0);

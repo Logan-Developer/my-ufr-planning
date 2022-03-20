@@ -8,11 +8,10 @@
     tools:context=".ui.settings.SettingsAlarmCategoryFragment">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Elevated"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_medium"
-        app:cardElevation="80dp">
+        android:layout_margin="@dimen/margin_medium">
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch_alarm_global"

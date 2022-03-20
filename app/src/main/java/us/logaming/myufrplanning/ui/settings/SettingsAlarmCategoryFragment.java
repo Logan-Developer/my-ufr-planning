@@ -252,7 +252,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
     }
 
     private void refreshSetAlarmWorker() {
-        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(SetAlarmWorker.class, 30, TimeUnit.MINUTES).build();
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(SetAlarmWorker.class, 2, TimeUnit.HOURS).build();
         WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(getString(R.string.set_alarm_worker_name), ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
     }
 }

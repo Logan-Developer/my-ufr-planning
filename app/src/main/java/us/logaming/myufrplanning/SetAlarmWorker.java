@@ -34,24 +34,34 @@ public class SetAlarmWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        if (sharedPreferences.getLong(context.getString(R.string.preference_next_alarm_timestamp_key), 0) < Calendar.getInstance().getTimeInMillis()) {
-            if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_8am_key), false)) {
-                setAlarmIfNeeded("8h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1),
-                        sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_minutes_key), -1));
+        this.planningRepository.fetchLatestPlanning(result -> {
+            if (result instanceof us.logaming.myufrplanning.data.Result.Success) {
+                List<PlanningItem> planningItems = ((us.logaming.myufrplanning.data.Result.Success<List<PlanningItem>>) result).data;
+
+                String firstClassTomorrowStoredBefore = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
+                checkAndStoreTomorrowFirstClass(planningItems);
+                String firstClassTomorrowCurrent = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
+
+                if (sharedPreferences.getLong(context.getString(R.string.preference_next_alarm_timestamp_key), 0) < Calendar.getInstance().getTimeInMillis() || !firstClassTomorrowStoredBefore.equals(firstClassTomorrowCurrent)) {
+                    if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_8am_key), false)) {
+                        setAlarmIfNeeded("8h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1),
+                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_minutes_key), -1));
+                    }
+                    if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_9h30am_key), false)) {
+                        setAlarmIfNeeded("9h30", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_hour_key), -1),
+                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_minutes_key), -1));
+                    }
+                    if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_11am_key), false)) {
+                        setAlarmIfNeeded("11h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_hour_key), -1),
+                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_minutes_key), -1));
+                    }
+                    if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_other_key), false)) {
+                        setAlarmIfNeeded("other", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_other_hour_key), -1),
+                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_other_minutes_key), -1));
+                    }
+                }
             }
-            if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_9h30am_key), false)) {
-                setAlarmIfNeeded("9h30", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_hour_key), -1),
-                        sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_minutes_key), -1));
-            }
-            if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_11am_key), false)) {
-                setAlarmIfNeeded("11h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_hour_key), -1),
-                        sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_minutes_key), -1));
-            }
-            if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_other_key), false)) {
-                setAlarmIfNeeded("other", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_other_hour_key), -1),
-                        sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_other_minutes_key), -1));
-            }
-        }
+        }, false);
         return Result.success();
     }
 
@@ -59,36 +69,33 @@ public class SetAlarmWorker extends Worker {
         if (hourAlarm == -1 || minuteAlarm == -1) {
             return;
         }
+        if (tomorrowFirstCourseMatches(firstCourseTime)) {
+            Intent alarmIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
+            alarmIntent.putExtra(AlarmClock.EXTRA_HOUR, hourAlarm);
+            alarmIntent.putExtra(AlarmClock.EXTRA_MINUTES, minuteAlarm);
+            alarmIntent.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+            alarmIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            this.context.startActivity(alarmIntent);
 
-        this.planningRepository.fetchLatestPlanning(result -> {
-            if (result instanceof us.logaming.myufrplanning.data.Result.Success) {
-                List<PlanningItem> planningItems = ((us.logaming.myufrplanning.data.Result.Success<List<PlanningItem>>) result).data;
-
-                if (tomorrowFirstCourseMatches(planningItems, firstCourseTime)) {
-                    Intent alarmIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
-                    alarmIntent.putExtra(AlarmClock.EXTRA_HOUR, hourAlarm);
-                    alarmIntent.putExtra(AlarmClock.EXTRA_MINUTES, minuteAlarm);
-                    alarmIntent.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
-                    alarmIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    this.context.startActivity(alarmIntent);
-
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.setTime(new Date());
-                    calendar.set(Calendar.HOUR, hourAlarm + 1);
-                    calendar.set(Calendar.MINUTE, minuteAlarm);
-
-                    sharedPreferences.edit().putLong(context.getString(R.string.preference_next_alarm_timestamp_key), calendar.getTimeInMillis()).apply();
-                }
-            }
-        }, false);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+            calendar.set(Calendar.HOUR, hourAlarm + 1);
+            calendar.set(Calendar.MINUTE, minuteAlarm);
+            sharedPreferences.edit().putLong(context.getString(R.string.preference_next_alarm_timestamp_key), calendar.getTimeInMillis()).apply();
+        }
     }
 
-    private boolean tomorrowFirstCourseMatches(List<PlanningItem> planningItems, String firstCourseTime) {
+    private void checkAndStoreTomorrowFirstClass(List<PlanningItem> planningItems) {
         for (int i = 0; i < planningItems.size(); i++) {
             if (planningItems.get(i).getTitle().contains("Demain")) {
-                return planningItems.get(i + 1).getHour().startsWith(firstCourseTime);
+                sharedPreferences.edit().putString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), planningItems.get(i + 1).getHour()).apply();
+                return;
             }
         }
-        return false;
+        sharedPreferences.edit().putString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null).apply();
+    }
+
+    private boolean tomorrowFirstCourseMatches(String firstCourseTime) {
+        return sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null).startsWith(firstCourseTime);
     }
 }

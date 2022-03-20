@@ -191,6 +191,8 @@ public class SettingsAlarmCategoryFragment extends Fragment {
         this.switch11Am.setChecked(this.sharedPreferences.getBoolean(getString(R.string.preference_enable_alarm_11am_key), false));
         this.switchOther.setChecked(this.sharedPreferences.getBoolean(getString(R.string.preference_enable_alarm_other_key), false));
 
+        this.layoutAlarms.setVisibility(this.switchGlobal.isChecked() ? View.VISIBLE : View.GONE);
+
         if (sharedPreferences.getInt(getString(R.string.preference_time_alarm_8am_hour_key), -1) == -1) {
             this.textSummaryAlarm8Am.setText(getString(R.string.preference_time_undefined));
         }

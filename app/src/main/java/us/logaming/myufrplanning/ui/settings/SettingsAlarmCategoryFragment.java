@@ -23,13 +23,13 @@ import android.widget.LinearLayout;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.android.material.timepicker.MaterialTimePicker;
-import com.google.android.material.timepicker.TimeFormat;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 import us.logaming.myufrplanning.R;
 import us.logaming.myufrplanning.SetAlarmWorker;
+import us.logaming.myufrplanning.data.utils.AlarmUtils;
 
 public class SettingsAlarmCategoryFragment extends Fragment {
 
@@ -111,13 +111,13 @@ public class SettingsAlarmCategoryFragment extends Fragment {
 
         root.findViewById(R.id.timepicker_alarm_8am).setOnClickListener(v -> {
             MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                    .setTimeFormat(getClockFormat())
+                    .setTimeFormat(AlarmUtils.getClockFormat(requireContext()))
                     .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_8am_hour_key), calendar.get(Calendar.HOUR_OF_DAY)))
                     .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_8am_minutes_key), calendar.get(Calendar.MINUTE)))
                     .build();
             timePicker.show(requireActivity().getSupportFragmentManager(), getString(R.string.preference_time_picker_tag));
             timePicker.addOnPositiveButtonClickListener(v1 -> {
-                String time = buildTime(timePicker.getHour(), timePicker.getMinute());
+                String time = AlarmUtils.buildTime(requireContext(), timePicker.getHour(), timePicker.getMinute());
                 this.textSummaryAlarm8Am.setText(time);
 
                 this.sharedPreferences.edit().putInt(getString(R.string.preference_time_alarm_8am_hour_key), timePicker.getHour())
@@ -129,13 +129,13 @@ public class SettingsAlarmCategoryFragment extends Fragment {
 
         root.findViewById(R.id.timepicker_alarm_9h30am).setOnClickListener(v -> {
             MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                    .setTimeFormat(getClockFormat())
+                    .setTimeFormat(AlarmUtils.getClockFormat(requireContext()))
                     .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_hour_key), calendar.get(Calendar.HOUR_OF_DAY)))
                     .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_minutes_key), calendar.get(Calendar.MINUTE)))
                     .build();
             timePicker.show(requireActivity().getSupportFragmentManager(), getString(R.string.preference_time_picker_tag));
             timePicker.addOnPositiveButtonClickListener(v1 -> {
-                String time = buildTime(timePicker.getHour(), timePicker.getMinute());
+                String time = AlarmUtils.buildTime(requireContext(), timePicker.getHour(), timePicker.getMinute());
                 this.textSummaryAlarm9h30Am.setText(time);
 
                 this.sharedPreferences.edit().putInt(getString(R.string.preference_time_alarm_9h30am_hour_key), timePicker.getHour())
@@ -147,13 +147,13 @@ public class SettingsAlarmCategoryFragment extends Fragment {
 
         root.findViewById(R.id.timepicker_alarm_11am).setOnClickListener(v -> {
             MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                    .setTimeFormat(getClockFormat())
+                    .setTimeFormat(AlarmUtils.getClockFormat(requireContext()))
                     .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_hour_key), calendar.get(Calendar.HOUR_OF_DAY)))
                     .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_minutes_key), calendar.get(Calendar.MINUTE)))
                     .build();
             timePicker.show(requireActivity().getSupportFragmentManager(), getString(R.string.preference_time_picker_tag));
             timePicker.addOnPositiveButtonClickListener(v1 -> {
-                String time = buildTime(timePicker.getHour(), timePicker.getMinute());
+                String time = AlarmUtils.buildTime(requireContext(), timePicker.getHour(), timePicker.getMinute());
                 this.textSummaryAlarm11Am.setText(time);
 
                 this.sharedPreferences.edit().putInt(getString(R.string.preference_time_alarm_11am_hour_key), timePicker.getHour())
@@ -165,13 +165,13 @@ public class SettingsAlarmCategoryFragment extends Fragment {
 
         root.findViewById(R.id.timepicker_alarm_other).setOnClickListener(v -> {
             MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                    .setTimeFormat(getClockFormat())
+                    .setTimeFormat(AlarmUtils.getClockFormat(requireContext()))
                     .setHour(sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_hour_key), calendar.get(Calendar.HOUR_OF_DAY)))
                     .setMinute(sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_minutes_key), calendar.get(Calendar.MINUTE)))
                     .build();
             timePicker.show(requireActivity().getSupportFragmentManager(), getString(R.string.preference_time_picker_tag));
             timePicker.addOnPositiveButtonClickListener(v1 -> {
-                String time = buildTime(timePicker.getHour(), timePicker.getMinute());
+                String time = AlarmUtils.buildTime(requireContext(), timePicker.getHour(), timePicker.getMinute());
                 this.textSummaryAlarmOther.setText(time);
 
                 this.sharedPreferences.edit().putInt(getString(R.string.preference_time_alarm_other_hour_key), timePicker.getHour())
@@ -197,7 +197,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
             this.textSummaryAlarm8Am.setText(getString(R.string.preference_time_undefined));
         }
         else {
-            this.textSummaryAlarm8Am.setText(buildTime(sharedPreferences.getInt(getString(R.string.preference_time_alarm_8am_hour_key), -1),
+            this.textSummaryAlarm8Am.setText(AlarmUtils.buildTime(requireContext(), sharedPreferences.getInt(getString(R.string.preference_time_alarm_8am_hour_key), -1),
                     sharedPreferences.getInt(getString(R.string.preference_time_alarm_8am_minutes_key), -1)));
         }
 
@@ -205,7 +205,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
             this.textSummaryAlarm9h30Am.setText(getString(R.string.preference_time_undefined));
         }
         else {
-            this.textSummaryAlarm9h30Am.setText(buildTime(sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_hour_key), -1),
+            this.textSummaryAlarm9h30Am.setText(AlarmUtils.buildTime(requireContext(), sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_hour_key), -1),
                     sharedPreferences.getInt(getString(R.string.preference_time_alarm_9h30am_minutes_key), -1)));
         }
 
@@ -213,7 +213,7 @@ public class SettingsAlarmCategoryFragment extends Fragment {
             this.textSummaryAlarm11Am.setText(getString(R.string.preference_time_undefined));
         }
         else {
-            this.textSummaryAlarm11Am.setText(buildTime(sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_hour_key), -1),
+            this.textSummaryAlarm11Am.setText(AlarmUtils.buildTime(requireContext(), sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_hour_key), -1),
                     sharedPreferences.getInt(getString(R.string.preference_time_alarm_11am_minutes_key), -1)));
         }
 
@@ -221,34 +221,9 @@ public class SettingsAlarmCategoryFragment extends Fragment {
             this.textSummaryAlarmOther.setText(getString(R.string.preference_time_undefined));
         }
         else {
-            this.textSummaryAlarmOther.setText(buildTime(sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_hour_key), -1),
+            this.textSummaryAlarmOther.setText(AlarmUtils.buildTime(requireContext(), sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_hour_key), -1),
                     sharedPreferences.getInt(getString(R.string.preference_time_alarm_other_minutes_key), -1)));
         }
-    }
-
-    private String buildTime(int hour, int minutes) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        int adaptedHour = hour <= 12 || getClockFormat() == TimeFormat.CLOCK_24H ? hour : hour - 12;
-
-        if (adaptedHour < 10) {
-            stringBuilder.append("0");
-        }
-        stringBuilder.append(adaptedHour).append(":");
-
-        if (minutes < 10) {
-            stringBuilder.append("0");
-        }
-        stringBuilder.append(minutes);
-        if (getClockFormat() == TimeFormat.CLOCK_12H) {
-            stringBuilder.append(" ")
-                    .append(hour < 12 ? "A.M." : "P.M.");
-        }
-        return stringBuilder.toString();
-    }
-
-    private int getClockFormat() {
-        return android.text.format.DateFormat.is24HourFormat(requireContext()) ? TimeFormat.CLOCK_24H : TimeFormat.CLOCK_12H;
     }
 
     private void refreshSetAlarmWorker() {

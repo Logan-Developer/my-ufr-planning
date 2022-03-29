@@ -83,6 +83,13 @@
     <!-- Notifications - Channels -->
     <string name="notifications_channel_permissions_name">Permissions</string>
     <string name="notifications_channel_permissions_description">Demande la permission d\'effectuer certaines tâches</string>
+    <string name="notifications_channel_info_name">Information</string>
+    <string name="notifications_channel_info_description">Affiche des informations utiles</string>
+
+    <!-- Notifications - Other time wake-up alarm -->
+    <string name="notifications_other_time_alarm_title">Réveil inhabituel</string>
+    <string name="notifications_other_time_alarm_text_short">Demain, votre 1er est %1$s. Votre réveil est prévu pour demain à %2$s</string>
+    <string name="notifications_other_time_alarm_text_long">Demain, votre 1er cours est %1$s. Votre réveil est prévu pour demain à %2$s. Vous pouvez changer cela manuellement.</string>
 
     <!-- Notifications - Display over other apps -->
     <string name="notifications_display_over_other_apps_title">Se superposer aux autres applis</string>

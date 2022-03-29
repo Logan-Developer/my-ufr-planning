@@ -75,14 +75,24 @@ public class MainActivity extends AppCompatActivity {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+
             CharSequence name = getString(R.string.notifications_channel_permissions_name);
             String description = getString(R.string.notifications_channel_permissions_description);
-            int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel(getString(R.string.notifications_channel_permissions_id), name, importance);
             channel.setDescription(description);
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+
+            name = getString(R.string.notifications_channel_info_name);
+            description = getString(R.string.notifications_channel_info_description);
+            channel = new NotificationChannel(getString(R.string.notifications_channel_info_id), name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
             notificationManager.createNotificationChannel(channel);
         }
     }

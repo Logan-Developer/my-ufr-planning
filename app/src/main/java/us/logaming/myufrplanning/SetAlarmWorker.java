@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.provider.AlarmClock;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.preference.PreferenceManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
@@ -13,10 +15,12 @@ import androidx.work.WorkerParameters;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 
 import us.logaming.myufrplanning.data.model.PlanningItem;
 import us.logaming.myufrplanning.data.repositories.PlanningRepository;
+import us.logaming.myufrplanning.data.utils.AlarmUtils;
 
 public class SetAlarmWorker extends Worker {
 
@@ -38,11 +42,15 @@ public class SetAlarmWorker extends Worker {
             if (result instanceof us.logaming.myufrplanning.data.Result.Success) {
                 List<PlanningItem> planningItems = ((us.logaming.myufrplanning.data.Result.Success<List<PlanningItem>>) result).data;
 
+                String tomorrowDate = getTomorrowDate(planningItems);
+                String tomorrowDateStoredBefore = sharedPreferences.getString("tomorrow_date", tomorrowDate);
+
                 String firstClassTomorrowStoredBefore = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
                 checkAndStoreTomorrowFirstClass(planningItems);
                 String firstClassTomorrowCurrent = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
 
-                if (sharedPreferences.getLong(context.getString(R.string.preference_next_alarm_timestamp_key), 0) < Calendar.getInstance().getTimeInMillis() || !firstClassTomorrowStoredBefore.equals(firstClassTomorrowCurrent)) {
+                if (sharedPreferences.getLong(context.getString(R.string.preference_next_alarm_timestamp_key), 0) < Calendar.getInstance().getTimeInMillis()
+                        || (!firstClassTomorrowStoredBefore.equals(firstClassTomorrowCurrent) && Objects.equals(tomorrowDate, tomorrowDateStoredBefore))) {
                     if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_8am_key), false)) {
                         setAlarmIfNeeded("8h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1),
                                 sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_minutes_key), -1));
@@ -96,6 +104,32 @@ public class SetAlarmWorker extends Worker {
     }
 
     private boolean tomorrowFirstCourseMatches(String firstCourseTime) {
+        if (firstCourseTime.equals("other")) {
+            String alarmTime = AlarmUtils.buildTime(this.context, sharedPreferences.getInt(this.context.getString(R.string.preference_time_alarm_other_hour_key), -1),
+                    sharedPreferences.getInt(this.context.getString(R.string.preference_time_alarm_other_minutes_key), -1));
+
+            firstCourseTime = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, this.context.getString(R.string.notifications_channel_info_id))
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentTitle(this.context.getString(R.string.notifications_other_time_alarm_title))
+                    .setContentText(this.context.getString(R.string.notifications_other_time_alarm_text_short, firstCourseTime, alarmTime))
+                    .setStyle(new NotificationCompat.BigTextStyle()
+                            .bigText(this.context.getString(R.string.notifications_other_time_alarm_text_long, firstCourseTime, alarmTime)))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+            NotificationManagerCompat.from(this.context).notify(1, builder.build());
+            return true;
+        }
         return sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null).startsWith(firstCourseTime);
+    }
+
+    private String getTomorrowDate(List<PlanningItem> planningItems) {
+        for (int i = 0; i < planningItems.size(); i++) {
+            if (planningItems.get(i).getTitle().contains("Demain")) {
+                return planningItems.get(i).getTitle();
+            }
+        }
+        return null;
     }
 }

@@ -52,16 +52,22 @@ public class SetAlarmWorker extends Worker {
                 if (sharedPreferences.getLong(context.getString(R.string.preference_next_alarm_timestamp_key), 0) < Calendar.getInstance().getTimeInMillis()
                         || (!firstClassTomorrowStoredBefore.equals(firstClassTomorrowCurrent) && Objects.equals(tomorrowDate, tomorrowDateStoredBefore))) {
                     if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_8am_key), false)) {
-                        setAlarmIfNeeded("8h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1),
-                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_minutes_key), -1));
+                        if (setAlarmIfNeeded("8h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1),
+                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_minutes_key), -1))) {
+                            return;
+                        }
                     }
                     if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_9h30am_key), false)) {
-                        setAlarmIfNeeded("9h30", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_hour_key), -1),
-                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_minutes_key), -1));
+                        if (setAlarmIfNeeded("9h30", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_hour_key), -1),
+                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_minutes_key), -1))) {
+                            return;
+                        }
                     }
                     if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_11am_key), false)) {
-                        setAlarmIfNeeded("11h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_hour_key), -1),
-                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_minutes_key), -1));
+                        if (setAlarmIfNeeded("11h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_hour_key), -1),
+                                sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_minutes_key), -1))) {
+                            return;
+                        }
                     }
                     if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_other_key), false)) {
                         setAlarmIfNeeded("other", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_other_hour_key), -1),
@@ -73,9 +79,16 @@ public class SetAlarmWorker extends Worker {
         return Result.success();
     }
 
-    private void setAlarmIfNeeded(String firstCourseTime, int hourAlarm, int minuteAlarm) {
+    /**
+     * Set an alarm if the time is valid and the alarm is not already set
+     * @param firstCourseTime the time of the first course
+     * @param hourAlarm the hour of the alarm
+     * @param minuteAlarm the minute of the alarm
+     * @return true if the alarm is set, false otherwise
+     */
+    private boolean setAlarmIfNeeded(String firstCourseTime, int hourAlarm, int minuteAlarm) {
         if (hourAlarm == -1 || minuteAlarm == -1) {
-            return;
+            return false;
         }
         if (tomorrowFirstCourseMatches(firstCourseTime)) {
             Intent alarmIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
@@ -90,7 +103,10 @@ public class SetAlarmWorker extends Worker {
             calendar.set(Calendar.HOUR, hourAlarm + 1);
             calendar.set(Calendar.MINUTE, minuteAlarm);
             sharedPreferences.edit().putLong(context.getString(R.string.preference_next_alarm_timestamp_key), calendar.getTimeInMillis()).apply();
+
+            return true;
         }
+        return false;
     }
 
     private void checkAndStoreTomorrowFirstClass(List<PlanningItem> planningItems) {

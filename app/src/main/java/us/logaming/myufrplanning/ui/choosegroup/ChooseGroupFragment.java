@@ -21,7 +21,6 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -47,7 +46,7 @@ public class ChooseGroupFragment extends Fragment implements GroupsAdapter.OnGro
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_first_config_choose_group, container, false);
+        View root = inflater.inflate(R.layout.fragment_choose_group, container, false);
 
         MaterialButton btnGoBack = root.findViewById(R.id.btn_first_config_go_back);
 

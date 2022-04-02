@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_medium"
+    tools:context=".ui.choosegroup.ChooseGroupFragment">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Groups list"
+        android:layout_gravity="center"
+        android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="These are your current selected groups. You can add more groups by clicking on the button below."
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_margin="@dimen/margin_medium"
+        android:textAppearance="?attr/textAppearanceBodySmall" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/recycler_view_groups"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:foreground="@drawable/ic_add"
+        style="?attr/floatingActionButtonLargeStyle"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_medium" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_first_config_go_back"
+            android:text="@string/btn_go_back"
+            android:layout_gravity="start"
+            style="@style/Widget.Material3.Button.TextButton"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_first_config_confirm"
+            android:text="@string/btn_confirm"
+            android:layout_gravity="end"
+            style="@style/Widget.Material3.Button"/>
+    </LinearLayout>
+</LinearLayout>

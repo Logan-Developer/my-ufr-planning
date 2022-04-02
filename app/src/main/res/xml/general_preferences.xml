@@ -35,7 +35,7 @@
             app:summaryOn="@string/preference_campus_sports_summary_on"/>
 
         <Preference
-            app:fragment="us.logaming.myufrplanning.ui.choosegroup.ChooseGroupFragment"
+            app:fragment="us.logaming.myufrplanning.ui.choosegroup.GroupsListFragment"
             app:key="@string/preference_group_key"
             app:title="@string/preference_group_title"
             app:summary="@string/preference_group_summary"/>

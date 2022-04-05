@@ -100,7 +100,8 @@ public class SetAlarmWorker extends Worker {
 
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(new Date());
-            calendar.set(Calendar.HOUR, hourAlarm + 1);
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+            calendar.set(Calendar.HOUR_OF_DAY, determineHourFarthestAlarm() + 1);
             calendar.set(Calendar.MINUTE, minuteAlarm);
             sharedPreferences.edit().putLong(context.getString(R.string.preference_next_alarm_timestamp_key), calendar.getTimeInMillis()).apply();
 
@@ -147,5 +148,24 @@ public class SetAlarmWorker extends Worker {
             }
         }
         return null;
+    }
+
+    private int determineHourFarthestAlarm() {
+        int hourAlarm8AM = sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1);
+        int hourAlarm9h30AM = sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_9h30am_hour_key), -1);
+        int hourAlarm11AM = sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_11am_hour_key), -1);
+        int hourAlarmOther = sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_other_hour_key), -1);
+
+        // See which alarm is the farthest in the future
+        if (hourAlarm8AM > hourAlarm9h30AM && hourAlarm8AM > hourAlarm11AM && hourAlarm8AM > hourAlarmOther) {
+            return hourAlarm8AM;
+        }
+        if (hourAlarm9h30AM > hourAlarm8AM && hourAlarm9h30AM > hourAlarm11AM && hourAlarm9h30AM > hourAlarmOther) {
+            return hourAlarm9h30AM;
+        }
+        if (hourAlarm11AM > hourAlarm8AM && hourAlarm11AM > hourAlarm9h30AM && hourAlarm11AM > hourAlarmOther) {
+            return hourAlarm11AM;
+        }
+        return hourAlarmOther;
     }
 }

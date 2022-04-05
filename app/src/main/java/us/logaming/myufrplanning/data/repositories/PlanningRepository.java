@@ -52,7 +52,8 @@ public class PlanningRepository {
         long lastModificationDate = sharedPreferences.getLong(context.getString(R.string.preference_local_planning_last_modification_key), 0);
 
         String planningString = this.localDataSource.fetchLatestPlanning();
-        if ((planningString.equals("") || (refreshFrequency != 0 && refreshFrequency <= (Calendar.getInstance().getTimeInMillis() - lastModificationDate))) && isConnectedToInternet()) {
+        if (tryToFetchOnlineVersion &&
+                ((planningString.equals("") || (refreshFrequency != 0 && refreshFrequency <= (Calendar.getInstance().getTimeInMillis() - lastModificationDate))) && isConnectedToInternet())) {
             planningString = this.remoteDataSource.fetchLatestPlanning();
         }
 

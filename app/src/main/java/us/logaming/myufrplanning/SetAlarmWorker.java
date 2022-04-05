@@ -28,6 +28,9 @@ public class SetAlarmWorker extends Worker {
     private final PlanningRepository planningRepository;
     private final SharedPreferences sharedPreferences;
 
+    private final static int NOTIFICATION_ID_UNUSUAL_ALARM = 1;
+    private final static int NOTIFICATION_ID_FIRST_COURSE_TOMORROW_CHANGED = 2;
+
     public SetAlarmWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
         this.context = context;
@@ -42,15 +45,8 @@ public class SetAlarmWorker extends Worker {
             if (result instanceof us.logaming.myufrplanning.data.Result.Success) {
                 List<PlanningItem> planningItems = ((us.logaming.myufrplanning.data.Result.Success<List<PlanningItem>>) result).data;
 
-                String tomorrowDate = getTomorrowDate(planningItems);
-                String tomorrowDateStoredBefore = sharedPreferences.getString("tomorrow_date", tomorrowDate);
-
-                String firstClassTomorrowStoredBefore = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
-                checkAndStoreTomorrowFirstClass(planningItems);
-                String firstClassTomorrowCurrent = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
-
                 if (sharedPreferences.getLong(context.getString(R.string.preference_next_alarm_timestamp_key), 0) < Calendar.getInstance().getTimeInMillis()
-                        || (!firstClassTomorrowStoredBefore.equals(firstClassTomorrowCurrent) && Objects.equals(tomorrowDate, tomorrowDateStoredBefore))) {
+                        || tomorrowFirstCourseChanged(planningItems)) {
                     if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_8am_key), false)) {
                         if (setAlarmIfNeeded("8h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1),
                                 sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_minutes_key), -1))) {
@@ -135,7 +131,7 @@ public class SetAlarmWorker extends Worker {
                             .bigText(this.context.getString(R.string.notifications_other_time_alarm_text_long, firstCourseTime, alarmTime)))
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-            NotificationManagerCompat.from(this.context).notify(1, builder.build());
+            NotificationManagerCompat.from(this.context).notify(NOTIFICATION_ID_UNUSUAL_ALARM, builder.build());
             return true;
         }
         return sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null).startsWith(firstCourseTime);
@@ -167,5 +163,30 @@ public class SetAlarmWorker extends Worker {
             return hourAlarm11AM;
         }
         return hourAlarmOther;
+    }
+
+    private boolean tomorrowFirstCourseChanged(List<PlanningItem> planningItems) {
+        String tomorrowDate = getTomorrowDate(planningItems);
+        String tomorrowDateStoredBefore = sharedPreferences.getString("tomorrow_date", tomorrowDate);
+
+        String firstClassTomorrowStoredBefore = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
+        checkAndStoreTomorrowFirstClass(planningItems);
+        String firstClassTomorrowCurrent = sharedPreferences.getString(context.getString(R.string.preference_alarm_first_class_tomorrow_key), null);
+
+        if (firstClassTomorrowStoredBefore.equals(firstClassTomorrowCurrent) || !Objects.equals(tomorrowDate, tomorrowDateStoredBefore)) {
+            return false;
+        }
+
+        // Inform the user that the first course has changed tomorrow by sending a notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, this.context.getString(R.string.notifications_channel_info_id))
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle(this.context.getString(R.string.notifications_first_class_tomorrow_changed_title))
+                .setContentText(this.context.getString(R.string.notifications_first_class_tomorrow_changed_text_short, firstClassTomorrowStoredBefore, firstClassTomorrowCurrent))
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(this.context.getString(R.string.notifications_first_class_tomorrow_changed_text_long, firstClassTomorrowStoredBefore, firstClassTomorrowCurrent)))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat.from(this.context).notify(NOTIFICATION_ID_FIRST_COURSE_TOMORROW_CHANGED, builder.build());
+
+        return true;
     }
 }

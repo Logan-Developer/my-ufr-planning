@@ -146,6 +146,11 @@
     <string name="notifications_other_time_alarm_text_short">Tomorrow, your first is %1$s. Your alarm is set for tomorrow at %2$s</string>
     <string name="notifications_other_time_alarm_text_long">Tomorrow, your first class is %1$s. Your alarm is set for tomorrow at %2$s If you want to change that, you can set it manually.</string>
 
+    <!-- Notifications - First class tomorrow changed -->
+    <string name="notifications_first_class_tomorrow_changed_title">First class tomorrow changed</string>
+    <string name="notifications_first_class_tomorrow_changed_text_short">Tomorrow, your first class was %1$s and it is now %2$s.</string>
+    <string name="notifications_first_class_tomorrow_changed_text_long">Tomorrow, your first class was %1$s and it is now %2$s. We invite you to check the alarm set, and modify it if necessary.</string>
+
     <!-- Miscellaneous -->
     <string name="planning_string_delimiter" translatable="false">#s#</string>
     <string name="set_alarm_worker_name" translatable="false">SetAlarmWorker</string>

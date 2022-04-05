@@ -95,4 +95,9 @@
     <string name="notifications_display_over_other_apps_title">Se superposer aux autres applis</string>
     <string name="notifications_display_over_other_apps_text_short">Appuyez ici pour activer</string>
     <string name="notifications_display_over_other_apps_text_long">Appuyez ici pour activer. Cela va laisser Mon Planning UFR paramétrer des alarmes automatiquement en arrière-plan.</string>
+
+    <!-- Notifications - First class tomorrow changed -->
+    <string name="notifications_first_class_tomorrow_changed_title">1er cours de demain modifié</string>
+    <string name="notifications_first_class_tomorrow_changed_text_short">Demain, votre 1er cours était à %1$s, et il est maintenant à %2$s</string>
+    <string name="notifications_first_class_tomorrow_changed_text_long">Demain, votre 1er cours était à %1$s, et il est maintenant à %2$s. Nous vous invitons à vérifier votre réveil, et à le modifier si nécessaire.</string>
 </resources>

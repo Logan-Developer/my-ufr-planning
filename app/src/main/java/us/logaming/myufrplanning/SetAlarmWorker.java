@@ -47,6 +47,8 @@ public class SetAlarmWorker extends Worker {
 
                 if (sharedPreferences.getLong(context.getString(R.string.preference_next_alarm_timestamp_key), 0) < Calendar.getInstance().getTimeInMillis()
                         || tomorrowFirstCourseChanged(planningItems)) {
+                    checkAndStoreTomorrowFirstClass(planningItems);
+
                     if (sharedPreferences.getBoolean(context.getString(R.string.preference_enable_alarm_8am_key), false)) {
                         if (setAlarmIfNeeded("8h", sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_hour_key), -1),
                                 sharedPreferences.getInt(context.getString(R.string.preference_time_alarm_8am_minutes_key), -1))) {

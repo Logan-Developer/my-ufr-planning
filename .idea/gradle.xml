@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="/mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanningV2" />
+            <option value="/mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanningV2/app" />
+            <option value="/mnt/Linux-Data/home/logan/Documents/AndroidStudioProjects/MyUFRPlanningV2/core-ui" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "My UFRPlanning"
 include(":app")
-include(":core-ui")

@@ -11,7 +11,6 @@
           <set>
             <option value="/mnt/Linux-Data/Documents/StudioProjects/my-ufr-planning" />
             <option value="/mnt/Linux-Data/Documents/StudioProjects/my-ufr-planning/app" />
-            <option value="/mnt/Linux-Data/Documents/StudioProjects/my-ufr-planning/core-ui" />
           </set>
         </option>
       </GradleProjectSettings>

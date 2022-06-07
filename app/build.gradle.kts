@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -47,18 +49,32 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
+
+    // Jetpack compose
     implementation("androidx.activity:activity-compose:1.4.0")
     implementation("androidx.compose.ui:ui:1.1.1")
     implementation("androidx.compose.ui:ui-tooling-preview:1.1.1")
-    implementation("androidx.compose.material3:material3:1.0.0-alpha12")
+    implementation("androidx.compose.material3:material3:1.0.0-alpha13")
+
+    // Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.38.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
     debugImplementation("androidx.compose.ui:ui-tooling:1.1.1")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.1.1")
+}
 
-    implementation(project(":core-ui"))
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

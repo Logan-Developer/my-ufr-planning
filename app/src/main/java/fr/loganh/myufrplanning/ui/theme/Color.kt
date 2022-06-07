@@ -1,4 +1,4 @@
-package fr.loganh.myufrplanning.core.ui.theme
+package fr.loganh.myufrplanning.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "fr.loganh.myufrplanning"
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "fr.loganh.myufrplanning"
         minSdk = 24
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -54,13 +54,16 @@ dependencies {
 
     // Jetpack compose
     implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("androidx.compose.runtime:runtime-livedata:1.2.0-rc01")
     implementation("androidx.compose.ui:ui:1.1.1")
     implementation("androidx.compose.ui:ui-tooling-preview:1.1.1")
     implementation("androidx.compose.material3:material3:1.0.0-alpha13")
+    implementation("androidx.navigation:navigation-compose:2.4.2")
 
     // Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.38.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+    implementation("com.google.dagger:hilt-android:2.42")
+    kapt("com.google.dagger:hilt-android-compiler:2.42")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

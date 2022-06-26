@@ -5,9 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import fr.loganh.myufrplanning.ui.components.MyUFRPlanningAppBar
+import fr.loganh.myufrplanning.ui.overview.OverviewScreen
 import fr.loganh.myufrplanning.ui.overview.OverviewViewModel
 import fr.loganh.myufrplanning.ui.theme.MyUFRPlanningTheme
 
@@ -22,8 +25,17 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             MyUFRPlanningTheme {
+                val navController = rememberNavController()
+
                 MyUFRPlanningAppBar(title = "My UFR Planning") {
-                    Text(text = viewModel.status.value?.toString() ?: "")
+                    NavHost(
+                        navController = navController,
+                        startDestination = "overview_screen"
+                    ) {
+                        composable("overview_screen") {
+                            OverviewScreen(viewModel)
+                        }
+                    }
                 }
             }
         }

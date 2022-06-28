@@ -27,7 +27,7 @@ fun CoursePlanningItem(
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp)
+            .padding(10.dp)
     ) {
         // first row contains course only
         Row(

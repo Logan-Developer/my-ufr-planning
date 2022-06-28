@@ -1,16 +1,12 @@
 package fr.loganh.myufrplanning.ui.overview
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import fr.loganh.myufrplanning.model.PlanningItem
 import fr.loganh.myufrplanning.ui.components.CoursePlanningItem
 import fr.loganh.myufrplanning.ui.components.DatePlanningItem

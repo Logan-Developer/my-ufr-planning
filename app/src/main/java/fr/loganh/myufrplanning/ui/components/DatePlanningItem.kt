@@ -19,7 +19,7 @@ fun DatePlanningItem(date: String) {
     Card(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 32.dp, bottom = 8.dp),
+            .padding(top = 20.dp, bottom = 20.dp),
         shape = RectangleShape,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer

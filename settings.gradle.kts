@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "My UFR Planning"
-include ':app'
+include(":app")

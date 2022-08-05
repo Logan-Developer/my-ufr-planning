@@ -51,6 +51,10 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.43.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")

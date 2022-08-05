@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/OverviewFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="fr.loganH.myufrplanning.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/OverviewFragment"
+        android:name="fr.loganH.myufrplanning.ui.overview.OverviewFragment"
+        android:label="@string/overview_fragment_label"
+        tools:layout="@layout/fragment_overview">
     </fragment>
 </navigation>

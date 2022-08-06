@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.compose.ui.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import fr.loganH.myufrplanning.R
 import fr.loganH.myufrplanning.databinding.ItemPlanningBinding
@@ -77,11 +78,15 @@ class OverviewAdapter(
                         holder.itemView.context.getColor(R.color.card_date_background)
                     )
                 }
+
+                holder.binding.textTitlePlanningItem.setTextColor(Color.White.hashCode())
             }
 
             holder.binding.cardPlanningItem.radius = 0f
             layoutParams.setMargins(0, 0, 0, 0)
             holder.binding.dividerPlanningItem.visibility = View.GONE
+
+            holder.binding.layoutSecondRowPlanningItem.visibility = View.GONE
         }
 
         else {
@@ -108,12 +113,16 @@ class OverviewAdapter(
                         holder.itemView.context.getColor(R.color.card_subject_background)
                     )
                 }
+
+                holder.binding.textTitlePlanningItem.setTextColor(Color.Black.hashCode())
             }
 
             holder.binding.cardPlanningItem.radius = 25f
             val marginValue: Int = holder.itemView.context.resources.getDimensionPixelSize(R.dimen.margin_medium)
             layoutParams.setMargins(marginValue, marginValue, marginValue, marginValue)
             holder.binding.dividerPlanningItem.visibility = View.VISIBLE
+
+            holder.binding.layoutSecondRowPlanningItem.visibility = View.VISIBLE
         }
 
         holder.binding.cardPlanningItem.layoutParams = layoutParams

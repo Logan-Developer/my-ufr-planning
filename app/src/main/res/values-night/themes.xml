@@ -7,4 +7,8 @@
 
         <item name="colorSurface">@color/card_subject_background_dark</item>
     </style>
+
+    <style name="Theme" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#fff</item>
+    </style>
 </resources>

@@ -59,7 +59,7 @@ class OverviewAdapter(
                 Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     holder.binding.cardPlanningItem.setCardBackgroundColor(
-                        holder.itemView.context.getColor(com.google.android.material.R.color.material_dynamic_secondary20)
+                        holder.itemView.context.getColor(com.google.android.material.R.color.material_dynamic_secondary30)
                     )
                 } else {
                     holder.binding.cardPlanningItem.setCardBackgroundColor(

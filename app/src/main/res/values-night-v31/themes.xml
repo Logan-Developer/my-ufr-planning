@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    Having themes.xml for night-v31 because of the priority order of the resource qualifiers.
+    -->
+
+    <!-- Base application theme. -->
+    <style name="Theme.MyUFRPlanning" parent="Theme.Material3.DynamicColors.Dark">
+        <!-- Remove the default action bar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="colorSecondaryContainer">@color/material_dynamic_secondary40</item>
+
+        <item name="colorSurface">@color/material_dynamic_secondary40</item>
+        <item name="colorSurfaceVariant">@color/material_dynamic_secondary40</item>
+
+        <item name="android:statusBarColor">@color/material_dynamic_secondary40</item>
+    </style>
+</resources>

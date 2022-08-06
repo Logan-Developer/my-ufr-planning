@@ -35,17 +35,22 @@
                     android:textAppearance="?attr/textAppearanceTitleMedium" />
             </LinearLayout>
 
-            <LinearLayout
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_planning_item"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="end">
+                android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/text_hour_planning_item"
                     android:text=""
+                    android:layout_alignParentStart="true"
                     android:textAppearance="?attr/textAppearanceBodyMedium" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -53,8 +58,17 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/text_teacher_planning_item"
                     android:text=""
+                    android:layout_centerHorizontal="true"
                     android:textAppearance="?attr/textAppearanceBodyMedium" />
-            </LinearLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_room_planning_item"
+                    android:text=""
+                    android:layout_alignParentEnd="true"
+                    android:textAppearance="?attr/textAppearanceBodyMedium" />
+            </RelativeLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </FrameLayout>

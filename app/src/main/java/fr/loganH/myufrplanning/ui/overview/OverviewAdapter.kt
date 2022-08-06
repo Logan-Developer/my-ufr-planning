@@ -34,12 +34,14 @@ class OverviewAdapter(
 
         if (items[position].isDate) {
             holder.binding.textTitlePlanningItem.text = items[position].title
-            holder.binding.textHourPlanningItem.visibility = View.GONE
-            holder.binding.textTeacherPlanningItem.visibility = View.GONE
+            holder.binding.textHourPlanningItem.text = ""
+            holder.binding.textRoomPlanningItem.text = ""
+            holder.binding.textTeacherPlanningItem.text = ""
         }
         else {
             holder.binding.textTitlePlanningItem.text = items[position].title
             holder.binding.textHourPlanningItem.text = items[position].hour
+            holder.binding.textRoomPlanningItem.text = items[position].room
             holder.binding.textTeacherPlanningItem.text = items[position].teacher
         }
         applyRightStyleOnCardView(holder, position)
@@ -79,6 +81,7 @@ class OverviewAdapter(
 
             holder.binding.cardPlanningItem.radius = 0f
             layoutParams.setMargins(0, 0, 0, 0)
+            holder.binding.dividerPlanningItem.visibility = View.GONE
         }
 
         else {
@@ -110,6 +113,7 @@ class OverviewAdapter(
             holder.binding.cardPlanningItem.radius = 25f
             val marginValue: Int = holder.itemView.context.resources.getDimensionPixelSize(R.dimen.margin_medium)
             layoutParams.setMargins(marginValue, marginValue, marginValue, marginValue)
+            holder.binding.dividerPlanningItem.visibility = View.VISIBLE
         }
 
         holder.binding.cardPlanningItem.layoutParams = layoutParams

@@ -10,7 +10,6 @@ class PlanningRepository @Inject constructor(
     private val planningRemoteDataSource: PlanningRemoteDataSource
 ) {
 
-    @Throws(Exception::class)
     suspend fun fetchPlanning(groupIds: List<Int>, nbDays: Int): List<PlanningItem> {
         val planning = planningRemoteDataSource.fetchPlanning(groupIds, nbDays)
 
@@ -20,18 +19,23 @@ class PlanningRepository @Inject constructor(
                     it.split(";")[1],
                     null,
                     null,
+                    null,
                     true
                 )
             } else {
                 val firstSplit = it.split(" : ")
+                val secondSplit = firstSplit[1].split(";")
 
                 val hours = firstSplit[0]
-                val title = firstSplit[1]
+                val title = secondSplit[0]
+                val room = if (secondSplit.size >= 2) secondSplit[1] else null
+                val teacher = if (secondSplit.size == 3) secondSplit[2] else null
 
                 PlanningItem(
                     title,
                     hours,
-                    null,
+                    room,
+                    teacher,
                     false
                 )
             }

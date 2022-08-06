@@ -1,5 +1,6 @@
 package fr.loganH.myufrplanning.ui.overview
 
+import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
